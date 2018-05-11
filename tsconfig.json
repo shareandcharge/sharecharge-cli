@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "es2017",
+      "strict": true,
+      "noImplicitAny": false,
+      "sourceMap": true,
+      "outDir": "dist",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "types": [
+        "node"
+      ],
+      "typeRoots": [
+        "./node_modules/@types"
+      ]
+    },
+    "exclude": [
+      "node_modules",
+      "logs"
+    ]
+  }
+  
