@@ -1,7 +1,7 @@
-import StorageLogic from "./storage.logic";
+import StoreLogic from "./store.logic";
 import ConfigProvider from "../services/configProvider";
 
-const storageLogic = new StorageLogic();
+const storeLogic = new StoreLogic();
 
 export default (yargs) => {
     yargs
@@ -19,7 +19,7 @@ export default (yargs) => {
                         describe: 'json file path containing array of location objects',
                     });
 
-            }, storageLogic.addLocation)
+            }, storeLogic.addLocation)
 
         .command("get-locations",
             "Retrieve a location (charge point) from the Share&Charge EV Network",
@@ -35,7 +35,7 @@ export default (yargs) => {
                         describe: 'global identifier of a Charge Point'
                     })
                     .string("_")
-            }, storageLogic.getLocation)
+            }, storeLogic.getLocation)
 
         .command("add-tariffs",
             "Add tariffs data on the Share&Charge EV Network",
@@ -47,7 +47,7 @@ export default (yargs) => {
                         describe: 'json file path containing tariffs data',
                     })
 
-            }, storageLogic.addTariffs)
+            }, storeLogic.addTariffs)
 
         .command("get-tariffs",
             "Retrieve CPO tariffs from the Share&Charge EV Network",
@@ -59,6 +59,6 @@ export default (yargs) => {
                         describe: 'address of the Charge Point Operator (default: your wallet)'
                     })
 
-            }, storageLogic.getTariffs);
+            }, storeLogic.getTariffs);
 
     }

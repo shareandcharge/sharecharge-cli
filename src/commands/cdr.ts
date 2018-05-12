@@ -11,28 +11,28 @@ export default (yargs) => {
         .demandCommand(1)
 
         .command("info",
-            "display informations and details",
+            "Query and filter Charge Detail Records issued by Charge Point Operators",
             (yargs) => {
                 yargs
                     .option("transactionHash", {
-                        alias: "h",
-                        describe: "Filter the logs by transactionHash"
+                        alias: "x",
+                        describe: "Filter by transactionHash"
                     })
                     .option("controller", {
                         alias: "c",
-                        describe: "Filter the logs by controller"
+                        describe: "Filter by controller (driver)"
                     })
                     .option("evseId", {
                         alias: "e",
-                        describe: "Filter the logs by evseId"
+                        describe: "Filter by EVSE ID"
                     })
                     .option("tokenAddress", {
                         alias: "t",
-                        describe: "Filter the logs by tokenAddress",
+                        describe: "Filter by a particular token contract address",
                     })
                     .option("date", {
                         alias: "d",
-                        describe: "Filter the logs by date. Year-month-day format (2018-04-01)",
+                        describe: "Filter by date in YYYY-MM-DD format (e.g. 2018-04-01)",
                     })
 
             }, cdrLogic.getInfo)

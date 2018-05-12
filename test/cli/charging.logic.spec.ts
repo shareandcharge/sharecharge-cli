@@ -1,7 +1,7 @@
 import * as mocha from 'mocha';
 import { expect } from 'chai';
 
-import ChargingLogic from "../../src/commands/charging.logic";
+import ChargingLogic from "../../src/commands/charge.logic";
 import Core from "../../src/core";
 
 import { Symbols } from "../../src/symbols";

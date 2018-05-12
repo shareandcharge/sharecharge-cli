@@ -1,7 +1,7 @@
 import * as yargs from "yargs";
-import chargingHandler from "./commands/charging";
+import chargeHandler from "./commands/charge";
 import tokenHandler from "./commands/token";
-import storageHandler from "./commands/storage";
+import storeHandler from "./commands/store";
 import cdrHandler from "./commands/cdr";
 
 const argv = yargs
@@ -15,10 +15,10 @@ const argv = yargs
     .command("cdr", "Access and filter Charge Detail Records", cdrHandler, (argv) => {
         yargs.showHelp();
     })
-    .command("charging", "Control EV charging sessions", chargingHandler, (argv) => {
+    .command("charge", "Control EV charging sessions", chargeHandler, (argv) => {
         yargs.showHelp();
     })
-    .command("store", "Add and query data stored on the Share&Charge EV Network", storageHandler, (argv) => {
+    .command("store", "Add and query data stored on the Share&Charge EV Network", storeHandler, (argv) => {
         yargs.showHelp();
     })
     .command("token", "Deploy and manage a Mobility Service Provider token", tokenHandler, (argv) => {

@@ -1,7 +1,7 @@
-import ChargingLogic from "./charging.logic";
+import ChargeLogic from "./charge.logic";
 import ConfigProvider from "../services/configProvider";
 
-const chargingLogic = new ChargingLogic();
+const chargeLogic = new ChargeLogic();
 
 export default (yargs) => {
 
@@ -33,7 +33,7 @@ export default (yargs) => {
                         describe: 'The estimated amount of tokens that the charging session will cost',
                         default: 0
                     })
-            }, chargingLogic.requestStart)
+            }, chargeLogic.requestStart)
 
         .command("confirm-start",
             "Confirm the start of a charging session at a particular location",
@@ -53,7 +53,7 @@ export default (yargs) => {
                         describe: 'The token address used to transfer funds for the charging session',
                         default: '0x01'
                     })
-            }, chargingLogic.confirmStart)
+            }, chargeLogic.confirmStart)
 
         .command("request-stop",
             "Request a charging session to end at a particular location",
@@ -69,7 +69,7 @@ export default (yargs) => {
                         describe: 'An identifier for the EVSE at the location',
                         demand: true
                     })
-            }, chargingLogic.requestStop)
+            }, chargeLogic.requestStop)
 
         .command("confirm-stop",
             "Confirm the end of a charging session at a particular location",
@@ -85,10 +85,10 @@ export default (yargs) => {
                         describe: 'An identifier for the EVSE at the location',
                         demand: true
                     })
-            }, chargingLogic.confirmStop)
+            }, chargeLogic.confirmStop)
 
         .command("cdr",
-            "Charge detail record",
+            "Issue a Charge Detail Record following the end of a session",
             (yargs) => {
                 yargs
                     .option("sc-id", {
@@ -103,9 +103,9 @@ export default (yargs) => {
                     })
                     .option("final-price", {
                         alias: 'f',
-                        describe: 'An identifier for the finalPrice',
-                        demand: true
+                        describe: 'The final price to be paid by the driver',
+                        default: 0
                     })
-            }, chargingLogic.chargeDetailRecord)
+            }, chargeLogic.chargeDetailRecord)
 
 }

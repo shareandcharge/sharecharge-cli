@@ -4,76 +4,84 @@ import LogicBase from '../logicBase';
 
 export default class CdrLogic extends LogicBase {
 
-    constructor(){
+    constructor() {
         super();
     }
 
     public getInfo = async (argv) => {
         if (!argv.json) {
-            console.log("Displaying Charge Detail Record: ");
-            const cdrInfo = await this.getCDRInfo(argv);            
-            console.log(cdrInfo);
+            const cdrInfo = await this.getCDRInfo(argv);
+            console.log(JSON.stringify(cdrInfo, null, 2));
         }
     }
 
     async getCDRInfo(argv): Promise<any> {
         const logDetails = await this.core.sc.charging.contract.getLogs('ChargeDetailRecord');
-        console.log(logDetails[0]);
         let allLogs = logDetails.map(obj => (
             {
-                transactionHash: obj.transactionHash,
-                address: obj.address,
-                controller: obj.returnValues.controller,
-                tokenAddress: obj.returnValues.tokenAddress,
                 date: new Date(obj.timestamp * 1000).toUTCString(),
-                timestamp: obj.timestamp
-                
+                evseId: obj.returnValues.evseId,
+                scId: obj.returnValues.scId,
+                controller: obj.returnValues.controller,
+                finalPrice: obj.returnValues.finalPrice,
+                tokenContract: obj.returnValues.tokenAddress,
+                chargingContract: obj.address,
+                transactionHash: obj.transactionHash,
             }
 
         ));
 
         // filtering 
-        if(argv.transactionHash){ 
-            allLogs = allLogs.filter( key => (    
-                key.transactionHash === argv.transactionHash
+        if (argv.transactionHash) {
+            allLogs = allLogs.filter(log => (
+                log.transactionHash === argv.transactionHash
             ));
-            console.log(" Filtered by transactionHash: ");
-        } 
-        
-        if(argv.controller) {
-            allLogs = allLogs.filter( key => (
-                key.controller === argv.controller
-            ));
-            console.log(" Filtered by controller: ");
+            // console.log("Filtered by transaction hash");
         }
 
-        if(argv.evseId) {
-            allLogs = allLogs.filter( key => (
-                key.evseId === argv.evseId
+        if (argv.controller) {
+            allLogs = allLogs.filter(log => (
+                log.controller === argv.controller
             ));
-            console.log(" Filtered by evseId: ");
+            // console.log("Filtered by controller");
         }
 
-        if(argv.tokenAddress) {
-            allLogs = allLogs.filter( key => (
-                key.tokenAddress === argv.tokenAddress
-            ));
-            console.log(" Filtered by evseId: ");
+        if (argv.scId) {
+            allLogs = allLogs.filter(log => {
+                log.evseId === argv.evseId
+            });
+            // console.log("Filtered by Share&Charge Location ID");
         }
 
-        if(argv.timestamp) {
-            allLogs = allLogs.filter( key => (
-                key.timestamp === argv.timestamp
+        if (argv.evseId) {
+            allLogs = allLogs.filter(log => (
+                log.evseId === argv.evseId
             ));
-            console.log(" Filtered by evseId: ");
+            // console.log("Filtered by EVSE ID");
         }
 
-        if(argv.date) {
+        if (argv.tokenAddress) {
+            allLogs = allLogs.filter(log => (
+                log.tokenContract === argv.tokenAddress
+            ));
+            // console.log("Filtered by e-Mobility Service Provider token");
+        }
+
+        if (argv.timestamp) {
+            allLogs = allLogs.filter(log => (
+                log.timestamp === argv.timestamp
+            ));
+            // console.log("Filtered by timestamp");
+        }
+
+        if (argv.date) {
             let date = new Date(argv.date).getTime() / 1000;
-            allLogs = allLogs.filter( key => (
-                key.timestamp >= date
+            allLogs = allLogs.filter(log => (
+                log.timestamp >= date
             ));
+            // console.log("Filtered by date");
         }
+
         return allLogs;
     }
 }

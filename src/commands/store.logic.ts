@@ -1,7 +1,7 @@
 import { ShareCharge } from "@motionwerk/sharecharge-lib";
 import LogicBase from "../logicBase"
 
-export default class StorageLogic extends LogicBase {
+export default class StoreLogic extends LogicBase {
 
     constructor() {
         super();
@@ -17,6 +17,7 @@ export default class StorageLogic extends LogicBase {
         } else {
             locations = this.core.locations || [];
         }
+
         for (const location of locations) {
             try {
                 // result should contain location id from OCPI structure
@@ -26,6 +27,7 @@ export default class StorageLogic extends LogicBase {
                 console.log(err.message);
             }
         }
+        
         console.log(`Added ${results.length} locations to network\n`);
         for (const res of results) {
             console.log(`${res.locId}\nscId: ${res.scId}\nipfs: ${res.ipfs}\n`);
