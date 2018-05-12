@@ -10,16 +10,6 @@ export default (yargs) => {
     .config("config", "Path to plaintext config file", ConfigProvider.loadConfigFromFile)
     .demandCommand(1)
 
-    /*
-        state (session) data is currently private on charging contract!
-    */
-    
-    //     .command("sessions",
-    //         "Lists all current charging session",
-    //         (yargs) => {
-
-    //         }, chargingoLogic.sessions)
-
         .command("request-start",
             "Request a charging session to start at a particular location",
             (yargs) => {

@@ -40,13 +40,6 @@ export default class CdrLogic extends LogicBase {
             console.log(" Filtered by transactionHash: ");
         } 
         
-        if(argv.address) {
-            allLogs = allLogs.filter( key => (
-                key.address === argv.address
-            ));
-            console.log(" Filtered by address: ");
-        } 
-        
         if(argv.controller) {
             allLogs = allLogs.filter( key => (
                 key.controller === argv.controller

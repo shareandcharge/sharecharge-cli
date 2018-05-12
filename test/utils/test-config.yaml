@@ -1,0 +1,4 @@
+--- 
+  bridge: ./testBridge1
+  evses: ./evses.json
+  stage: local

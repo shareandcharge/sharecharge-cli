@@ -15,12 +15,8 @@ export default (yargs) => {
             (yargs) => {
                 yargs
                     .option("transactionHash", {
-                        alias: "t",
+                        alias: "h",
                         describe: "Filter the logs by transactionHash"
-                    })
-                    .option("address", {
-                        alias: "a",
-                        describe: "Filter the logs by address"
                     })
                     .option("controller", {
                         alias: "c",
@@ -31,7 +27,7 @@ export default (yargs) => {
                         describe: "Filter the logs by evseId"
                     })
                     .option("tokenAddress", {
-                        alias: "o",
+                        alias: "t",
                         describe: "Filter the logs by tokenAddress",
                     })
                     .option("date", {

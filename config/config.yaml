@@ -1,7 +1,7 @@
 --- 
   locationsPath: ../../config/locations.json
-  stage: "local"
-  ethProvider: "http://localhost:8545"
+  # stage: "local"
+  # ethProvider: "http://localhost:8545"
   # msp seed ending 'cool'; 
   # cpo seed ending 'warm'; 
   # driver seed ending 'cold';
