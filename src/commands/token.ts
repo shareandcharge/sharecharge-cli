@@ -67,7 +67,6 @@ export default (yargs) => {
                         type: "string"
                     })
                     .string("_")
-                    .demand("driver")
             }, tokenLogic.balance)
 
         .command("info",
