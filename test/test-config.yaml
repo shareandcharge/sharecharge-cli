@@ -1,5 +1,6 @@
 --- 
   locationsPath: ../../src/config/locations.json
+  tariffsPath: ../../src/config/tariffs.json
   stage: "local"
   seed: "filter march urge naive sauce distance under copy payment slow just cool"
   gasPrice: 2

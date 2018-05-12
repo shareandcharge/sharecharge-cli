@@ -37,7 +37,7 @@ export default class LocationsProvider {
 
         for (const location of this.locations) {
             for (const evse of location.evses) {
-                evseIds.push(evse.evse_id);
+                evseIds.push(evse['evse_id']);
             }
         }
 

@@ -6,6 +6,7 @@ import ConfigProvider from "./services/configProvider";
 import ShareChargeProvider from "./services/shareChargeProvider";
 import WalletProvider from "./services/walletProvider";
 import LocationsProvider from "./services/locationsProvider";
+import TariffsProvider from "./services/tariffsProvider";
 
 import IConfig from "./interfaces/iConfig";
 
@@ -16,7 +17,8 @@ export default class Core {
 
     constructor(@inject(Symbols.ConfigProvider) private configProvider: ConfigProvider,
                 @inject(Symbols.ShareChargeProvider) private shareChargeProvider: ShareChargeProvider,
-                @inject(Symbols.LocationsProvider) private locationsProvider: LocationsProvider,                
+                @inject(Symbols.LocationsProvider) private locationsProvider: LocationsProvider,
+                @inject(Symbols.TariffsProvider) private tariffsProvider: TariffsProvider,                
                 @inject(Symbols.WalletProvider) private walletProvider: WalletProvider) {
     }
 
@@ -26,6 +28,10 @@ export default class Core {
 
     get locations(): Location {
         return this.locationsProvider.getLocations();
+    }
+
+    get tariffs(): any {
+        return this.tariffsProvider.getTariffs();
     }
 
     get wallet(): Wallet {
@@ -43,6 +49,7 @@ export default class Core {
             container.bind<ConfigProvider>(Symbols.ConfigProvider).to(ConfigProvider).inSingletonScope();
             container.bind<ShareChargeProvider>(Symbols.ShareChargeProvider).to(ShareChargeProvider).inSingletonScope();
             container.bind<LocationsProvider>(Symbols.LocationsProvider).to(LocationsProvider).inSingletonScope();
+            container.bind<TariffsProvider>(Symbols.TariffsProvider).to(TariffsProvider).inSingletonScope();
             container.bind<WalletProvider>(Symbols.WalletProvider).to(WalletProvider).inSingletonScope();
             Core.container = container;
         }

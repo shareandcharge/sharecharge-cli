@@ -1,5 +1,6 @@
 --- 
   locationsPath: ../../config/locations.json
+  tariffsPath: ../../config/tariffs.json
   # stage: "local"
   # ethProvider: "http://localhost:8545"
   # msp seed ending 'cool'; 
@@ -7,4 +8,4 @@
   # driver seed ending 'cold';
   seed: "filter march urge naive sauce distance under copy payment slow just cool"
   gasPrice: 2
-  # tokenAddress: '0x231148179C36515131B151AF5f34D70739f6bFBA'
+  tokenAddress: '0x945BBda7699ed93d37cfBc897310A4c33B739631'

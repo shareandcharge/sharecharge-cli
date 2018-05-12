@@ -17,7 +17,6 @@ export default (yargs) => {
                     .option("file", {
                         alias: 'f',
                         describe: 'json file path containing array of location objects',
-                        demand: true
                     });
 
             }, storageLogic.addLocation)
@@ -46,7 +45,6 @@ export default (yargs) => {
                     .option("file", {
                         alias: 'f',
                         describe: 'json file path containing tariffs data',
-                        demand: true
                     })
 
             }, storageLogic.addTariffs)

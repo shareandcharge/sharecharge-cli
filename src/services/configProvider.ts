@@ -16,6 +16,10 @@ export default class ConfigProvider implements IConfig {
         return this.config.locationsPath;
     }
 
+    get tariffsPath() {
+        return this.config.tariffsPath;
+    }
+
     get gasPrice() {
         return this.config.gasPrice || 2;
     }
@@ -47,6 +51,7 @@ export default class ConfigProvider implements IConfig {
     private static createConfig(argv: any): IConfig {
         return <IConfig>{
             locationsPath: argv.locationsPath,
+            tariffsPath: argv.tariffsPath,
             stage: argv.stage,
             seed: argv.seed,
             gasPrice: argv.gasPrice,
