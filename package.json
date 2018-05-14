@@ -4,8 +4,8 @@
   "description": "Command Line Interface for the Share&Charge e-Mobility Network",
   "main": "index.js",
   "scripts": {
-    "prepare": "mkdir -p ./dist/ && touch ./dist/sc.js",
-    "install": "tsc && echo '#!/usr/bin/env node'| cat - ./dist/sc.js > ./dist/sc.node.js",
+    "install": "npm run build",
+    "build": "tsc && echo '#!/usr/bin/env node'| cat - ./dist/sc.js > ./dist/sc.node.js",
     "test": "mocha --exit -r ts-node/register test/**/*.spec.ts"
   },
   "repository": {
