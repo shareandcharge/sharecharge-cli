@@ -17,8 +17,7 @@
     "url": "https://github.com/motionwerkGmbH/sharecharge-cli/issues"
   },
   "bin": {
-    "sc": "./dist/src/sc.js",
-    "sc-dev": "node_modules/ts-node/dist/bin.js"
+    "sc": "./dist/src/sc.js"
   },
   "homepage": "https://github.com/motionwerkGmbH/sharecharge-cli#readme",
   "dependencies": {
