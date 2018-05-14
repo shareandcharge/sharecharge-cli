@@ -9,7 +9,7 @@ export default class ConfigProvider implements IConfig {
     protected config: IConfig;
 
     constructor() {
-        this.config = ConfigProvider.loadConfigFromFile("../../config/config.yaml")
+        this.config = ConfigProvider.loadConfigFromFile(path.join(__dirname, "../../config/config.yaml"))
     }
 
     get locationsPath() {
@@ -40,8 +40,7 @@ export default class ConfigProvider implements IConfig {
         return this.config.tokenAddress;
     }
 
-    public static loadConfigFromFile(filename: string): IConfig {
-        const configPath = filename.startsWith("/") ? filename : path.join(__dirname, filename);
+    public static loadConfigFromFile(configPath: string): IConfig {
         const parser = new Parser();
         //console.log("reading config from", configPath);
         const configString = parser.read(configPath);
