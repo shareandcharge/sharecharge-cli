@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-ts-node src/sc.ts $@
+node ./dist/sc.js $@
