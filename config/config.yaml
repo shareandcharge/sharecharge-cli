@@ -1,5 +1,5 @@
 --- 
-  locationsPath: ../../config/locations-bs.json
+  locationsPath: ../../config/locations.json
   tariffsPath: ../../config/tariffs.json
   # stage: "local"
   # ethProvider: "http://localhost:8545"
