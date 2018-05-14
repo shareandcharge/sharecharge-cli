@@ -1,5 +1,5 @@
 {
-  "name": "sharecharge-cli",
+  "name": "@motionwerk/sharecharge-cli",
   "version": "0.0.1",
   "description": "Command Line Interface for the Share&Charge e-Mobility Network",
   "main": "index.js",
