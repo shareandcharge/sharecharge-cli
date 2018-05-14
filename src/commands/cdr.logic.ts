@@ -1,5 +1,6 @@
 import { log } from 'util';
 import LogicBase from '../logicBase';
+import { ToolKit } from '@motionwerk/sharecharge-lib';
 
 export default class CdrLogic extends LogicBase {
 
@@ -17,16 +18,16 @@ export default class CdrLogic extends LogicBase {
     async getCDRInfo(argv): Promise<any> {
 
         // filtering
-        // const filter = {};
-        // if (argv.transactionHash) {
-        //     filter['transactionHash'] = argv.transactionHash;
-        // }
+        const filter = {};
+        if (argv.controller) {
+            filter['controller'] = argv.controller.toLowerCase();
+        }
 
-        const logDetails = await this.core.sc.charging.contract.getLogs('ChargeDetailRecord'/*, filter*/);
+        const logDetails = await this.core.sc.charging.contract.getLogs('ChargeDetailRecord', filter);
         let allLogs: any = logDetails.map(obj => (
             {
                 date: new Date(obj.timestamp * 1000).toUTCString(),
-                evseId: obj.returnValues.evseId,
+                evseId: ToolKit.hexToString(obj.returnValues.evseId),
                 scId: obj.returnValues.scId,
                 controller: obj.returnValues.controller,
                 finalPrice: obj.returnValues.finalPrice,
@@ -45,12 +46,12 @@ export default class CdrLogic extends LogicBase {
             // console.log("Filtered by transaction hash");
         }
 
-        if (argv.controller) {
-            allLogs = allLogs.filter(log => (
-                log.controller === argv.controller
-            ));
-            // console.log("Filtered by controller");
-        }
+        // if (argv.controller) {
+        //     allLogs = allLogs.filter(log => (
+        //         log.controller === argv.controller
+        //     ));
+        //     // console.log("Filtered by controller");
+        // }
 
         if (argv.scId) {
             allLogs = allLogs.filter(log => {

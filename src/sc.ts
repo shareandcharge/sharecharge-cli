@@ -15,7 +15,7 @@ const argv = yargs
     .command("cdr", "Access and filter Charge Detail Records", cdrHandler, (argv) => {
         yargs.showHelp();
     })
-    .command("charge", "Control EV charging sessions", chargeHandler, (argv) => {
+    .command("charging", "Control EV charging sessions", chargeHandler, (argv) => {
         yargs.showHelp();
     })
     .command("store", "Add and query data stored on the Share&Charge EV Network", storeHandler, (argv) => {
