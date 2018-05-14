@@ -4,6 +4,7 @@
   "description": "Command Line Interface for the Share&Charge e-Mobility Network",
   "main": "index.js",
   "scripts": {
+    "install": "tsc",
     "test": "mocha --exit -r ts-node/register test/**/*.spec.ts"
   },
   "repository": {
@@ -14,6 +15,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/motionwerkGmbH/sharecharge-cli/issues"
+  },
+  "bin": {
+    "sc": "./dist/sc.js"
   },
   "homepage": "https://github.com/motionwerkGmbH/sharecharge-cli#readme",
   "dependencies": {

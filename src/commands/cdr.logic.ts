@@ -1,5 +1,4 @@
 import { log } from 'util';
-import { Evse, ShareCharge, ToolKit } from "@motionwerk/sharecharge-lib";
 import LogicBase from '../logicBase';
 
 export default class CdrLogic extends LogicBase {
@@ -13,7 +12,7 @@ export default class CdrLogic extends LogicBase {
             const cdrInfo = await this.getCDRInfo(argv);
             console.log(JSON.stringify(cdrInfo, null, 2));
         }
-    }
+    };
 
     async getCDRInfo(argv): Promise<any> {
 
@@ -24,7 +23,7 @@ export default class CdrLogic extends LogicBase {
         // }
 
         const logDetails = await this.core.sc.charging.contract.getLogs('ChargeDetailRecord'/*, filter*/);
-        let allLogs = logDetails.map(obj => (
+        let allLogs: any = logDetails.map(obj => (
             {
                 date: new Date(obj.timestamp * 1000).toUTCString(),
                 evseId: obj.returnValues.evseId,

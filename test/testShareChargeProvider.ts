@@ -1,6 +1,6 @@
-import { injectable, inject } from "inversify";
+import { injectable } from "inversify";
 import ShareChargeProvider from "../src/services/shareChargeProvider";
-import { Evse, Wallet, Station, ToolKit } from "@motionwerk/sharecharge-lib";
+import { Wallet, ToolKit } from "@motionwerk/sharecharge-lib";
 
 @injectable()
 export default class TestShareChargeProvider extends ShareChargeProvider {
@@ -79,14 +79,14 @@ export default class TestShareChargeProvider extends ShareChargeProvider {
                 return TestShareChargeProvider.evseModifiers
             },
             getById: (id) => {
-                return TestShareChargeProvider.blockchain.evses[id] || Evse.deserialize({
+                return TestShareChargeProvider.blockchain.evses[id] || {
                     id: id,
                     owner: TestShareChargeProvider.owner
-                });
+                };
             },
             getByUid: (uid) => {
 
-                let result: Evse = new Evse();
+                let result: any = {};
 
                 for (let key of Object.keys(TestShareChargeProvider.blockchain.evses)) {
 
@@ -104,7 +104,7 @@ export default class TestShareChargeProvider extends ShareChargeProvider {
             getSession: (uid) => {
 
                 return {
-                    controller: ToolKit.randomBytes32String()
+                    controller: "0x123456"
                 }
             }
         },
@@ -113,15 +113,15 @@ export default class TestShareChargeProvider extends ShareChargeProvider {
                 return TestShareChargeProvider.stationModifiers
             },
             getById: (id) => {
-                return TestShareChargeProvider.blockchain.stations[id] || Station.deserialize({
+                return TestShareChargeProvider.blockchain.stations[id] || {
                     id: id,
                     owner: "0x00",
                     openingHours: "0x00"
-                });
+                };
             }
         },
         charging: {
-            contract: { },
+            contract: {},
             useWallet: (wallet) => {
                 return TestShareChargeProvider.chargingModifiers
             }

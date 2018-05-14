@@ -1,4 +1,3 @@
-import { Evse, ToolKit, Wallet } from "@motionwerk/sharecharge-lib";
 import LogicBase from "../logicBase"
 
 export default class ChargeLogic extends LogicBase {
@@ -13,7 +12,7 @@ export default class ChargeLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
-    }
+    };
 
     public confirmStart = async (argv) => {
         try {
@@ -22,7 +21,7 @@ export default class ChargeLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
-    }
+    };
 
     public requestStop = async (argv) => {
         try {
@@ -31,7 +30,7 @@ export default class ChargeLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
-    }
+    };
 
     public confirmStop = async (argv) => {
         try {
@@ -40,7 +39,7 @@ export default class ChargeLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
-    }
+    };
 
     public chargeDetailRecord = async (argv) => {
         try {
