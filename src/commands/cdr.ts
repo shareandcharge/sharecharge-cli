@@ -22,6 +22,10 @@ export default (yargs) => {
                         alias: "c",
                         describe: "Filter by controller (driver)"
                     })
+                    .option("scId", {
+                        alias: "s",
+                        describe: "Filter by sc id"
+                    })
                     .option("evseId", {
                         alias: "e",
                         describe: "Filter by EVSE ID"
