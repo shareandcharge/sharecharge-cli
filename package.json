@@ -1,7 +1,7 @@
 {
   "name": "sharecharge-cli",
   "version": "0.0.1",
-  "description": "Command Line Interface for Share&Charge e-Mobility Network",
+  "description": "Command Line Interface for the Share&Charge e-Mobility Network",
   "main": "index.js",
   "scripts": {
     "test": "mocha --exit -r ts-node/register test/**/*.spec.ts"
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/motionwerkGmbH/sharecharge-cli#readme",
   "dependencies": {
-    "@motionwerk/sharecharge-lib": "0.0.21",
+    "@motionwerk/sharecharge-lib": "0.0.22",
     "inversify": "^4.13.0",
     "js-yaml": "^3.11.0",
     "reflect-metadata": "^0.1.12",

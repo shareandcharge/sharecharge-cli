@@ -16,7 +16,14 @@ export default class CdrLogic extends LogicBase {
     }
 
     async getCDRInfo(argv): Promise<any> {
-        const logDetails = await this.core.sc.charging.contract.getLogs('ChargeDetailRecord');
+
+        // filtering
+        // const filter = {};
+        // if (argv.transactionHash) {
+        //     filter['transactionHash'] = argv.transactionHash;
+        // }
+
+        const logDetails = await this.core.sc.charging.contract.getLogs('ChargeDetailRecord'/*, filter*/);
         let allLogs = logDetails.map(obj => (
             {
                 date: new Date(obj.timestamp * 1000).toUTCString(),
@@ -31,7 +38,7 @@ export default class CdrLogic extends LogicBase {
 
         ));
 
-        // filtering 
+        // filtering
         if (argv.transactionHash) {
             allLogs = allLogs.filter(log => (
                 log.transactionHash === argv.transactionHash
