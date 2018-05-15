@@ -21,6 +21,17 @@ export default (yargs) => {
 
             }, storeLogic.addLocation)
 
+        .command("get-ids",
+            "Retrieve Share & Charge location IDs",
+            (yargs) => {
+                yargs
+                    .option("cpo", {
+                        alias: 'c',
+                        describe: 'address of the Charge Point Operator (default: your wallet)'
+                    })
+                    .string("_")
+            }, storeLogic.getIds)
+
         .command("get-locations",
             "Retrieve a location (charge point) from the Share&Charge EV Network",
             (yargs) => {

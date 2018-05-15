@@ -35,6 +35,14 @@ export default class StoreLogic extends LogicBase {
 
     }
 
+    public getIds = async (argv) => {
+        const cpo = argv.cpo || this.core.wallet.keychain[0].address;
+        const ids = await this.core.sc.store.getIdsByCPO(cpo);
+        for (const id of ids) {
+            console.log(id);
+        }
+    }
+
     public getLocation = async (argv) => {
         const cpo = argv.cpo || this.core.wallet.keychain[0].address;
         if (argv.id) {
