@@ -20,29 +20,23 @@ export default class CdrLogic extends LogicBase {
         // filtering
         const filter = {};
         if (argv.scId) {
-            console.log("Filtered by sc Id");
             filter['scId'] = argv.scId.toLowerCase();
         }
         if (argv.evseId) {
-            console.log('Filtered by evse');
             const evseHex = ToolKit.asciiToHex(argv.evseId);
             const evsePadded = evseHex.padEnd(66, '0');
             filter['evseId'] = evsePadded;
         }
         if (argv.controller) {
-            console.log("Filtered by controller");
             filter['controller'] = argv.controller.toLowerCase();
         }
         if (argv.tokenAddress) {
-            console.log("Filtered by token address");
             filter['tokenAddress'] = argv.tokenAddress.toLowerCase();
         }
         if (argv.start || argv.end) {
             const start = Math.round(new Date(argv.start).getTime() / 1000 || 0);
             const end = Math.round(new Date(argv.end).getTime() / 1000 || Date.now() / 1000);
-            console.log("Filtered by date:", start, 'to', end);
             filter['timestamp'] = { start, end };
-            console.log(filter);
         }
 
         const logDetails = await this.core.sc.charging.contract.getLogs('ChargeDetailRecord', filter);
@@ -58,7 +52,6 @@ export default class CdrLogic extends LogicBase {
                 chargingContract: obj.address,
                 transactionHash: obj.transactionHash,
             }
-
         ));
 
         return allLogs;
