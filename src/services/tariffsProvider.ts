@@ -1,9 +1,9 @@
 import { injectable, inject } from "inversify";
 import * as path from "path";
-import IConfig from "../interfaces/iConfig";
-import { Symbols } from "../symbols";
 import * as fs from "fs";
-import { stat } from "fs";
+
+import { IConfig, getConfigDir } from "@motionwerk/sharecharge-config";
+import { Symbols } from "../symbols";
 
 @injectable()
 export default class TariffsProvider {
@@ -16,7 +16,7 @@ export default class TariffsProvider {
 
     private static loadTariffsFromPath(tariffsPath) {
 
-        const fullPath = path.join(__dirname, tariffsPath);
+        const fullPath = path.join(getConfigDir(), tariffsPath);
 
         try {
             fs.statSync(fullPath);

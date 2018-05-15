@@ -10,11 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_1 = require("inversify");
-const path = require("path");
-const parser_1 = require("../utils/parser");
+const fs = require("fs");
+const sharecharge_config_1 = require("@motionwerk/sharecharge-config");
 let ConfigProvider = ConfigProvider_1 = class ConfigProvider {
     constructor() {
-        this.config = ConfigProvider_1.loadConfigFromFile(path.join(__dirname, "../../config/config.yaml"));
+        this.config = ConfigProvider_1.load(sharecharge_config_1.default() + "/config.json");
+    }
+    static load(file) {
+        return JSON.parse(fs.readFileSync(file, "UTF8"));
     }
     get locationsPath() {
         return this.config.locationsPath;
@@ -38,10 +41,7 @@ let ConfigProvider = ConfigProvider_1 = class ConfigProvider {
         return this.config.tokenAddress;
     }
     static loadConfigFromFile(configPath) {
-        const parser = new parser_1.default();
-        //console.log("reading config from", configPath);
-        const configString = parser.read(configPath);
-        return ConfigProvider_1.createConfig(parser.translate(configString));
+        return ConfigProvider_1.createConfig(ConfigProvider_1.load(configPath));
     }
     ;
     static createConfig(argv) {

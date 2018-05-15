@@ -22,11 +22,11 @@
   },
   "homepage": "https://github.com/motionwerkGmbH/sharecharge-cli#readme",
   "dependencies": {
+    "@motionwerk/sharecharge-config": "^1.0.4",
     "@motionwerk/sharecharge-lib": "^0.1.1",
     "inversify": "^4.13.0",
     "js-yaml": "^3.11.0",
     "reflect-metadata": "^0.1.12",
-    "toml": "^2.3.3",
     "yargs": "^11.0.0"
   },
   "devDependencies": {

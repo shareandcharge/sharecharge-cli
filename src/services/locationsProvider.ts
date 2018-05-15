@@ -1,9 +1,8 @@
 import { injectable, inject } from "inversify";
 import * as path from "path";
-import IConfig from "../interfaces/iConfig";
-import { Symbols } from "../symbols";
 import * as fs from "fs";
-import { stat } from "fs";
+import { IConfig, getConfigDir } from "@motionwerk/sharecharge-config";
+import { Symbols } from "../symbols";
 
 @injectable()
 export default class LocationsProvider {
@@ -16,7 +15,7 @@ export default class LocationsProvider {
 
     private static loadLocationsFromPath(locationsPath) {
 
-        const fullPath = path.join(__dirname, locationsPath);
+        const fullPath = path.join(getConfigDir(), locationsPath);
 
         try {
             fs.statSync(fullPath);

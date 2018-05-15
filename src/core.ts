@@ -8,7 +8,7 @@ import WalletProvider from "./services/walletProvider";
 import LocationsProvider from "./services/locationsProvider";
 import TariffsProvider from "./services/tariffsProvider";
 
-import IConfig from "./interfaces/iConfig";
+import IConfig from "../../sharecharge-config/src/iConfig";
 
 @injectable()
 export default class Core {

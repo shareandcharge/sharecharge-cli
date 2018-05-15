@@ -1,10 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const yargs = require("yargs");
+const sharecharge_config_1 = require("@motionwerk/sharecharge-config");
 const charge_1 = require("./commands/charge");
 const token_1 = require("./commands/token");
 const store_1 = require("./commands/store");
 const cdr_1 = require("./commands/cdr");
+sharecharge_config_1.prepareConfigLocation([
+    "locations",
+    "locations-bs",
+    "tariffs"
+]);
 const argv = yargs
     .usage("Usage: sc <command> [options]")
     .version("0.0.1")

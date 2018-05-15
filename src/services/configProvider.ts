@@ -1,15 +1,26 @@
 import { injectable, inject } from "inversify";
+import * as fs from "fs";
 import * as path from "path";
-import IConfig from "../interfaces/iConfig";
-import Parser from "../utils/parser";
+import { getConfigDir, IConfig, prepareConfigLocation } from "@motionwerk/sharecharge-config";
+
+prepareConfigLocation(path.join(__dirname, "/../../config-templates/"), [
+    "locations.json",
+    "locations-bs.json",
+    "tariffs.json"
+]);
 
 @injectable()
 export default class ConfigProvider implements IConfig {
 
     protected config: IConfig;
 
+    static load(file): IConfig {
+
+        return <IConfig>JSON.parse(fs.readFileSync(file, "UTF8"))
+    }
+
     constructor() {
-        this.config = ConfigProvider.loadConfigFromFile(path.join(__dirname, "../../config/config.yaml"))
+        this.config = ConfigProvider.load(getConfigDir() + "config.json");
     }
 
     get locationsPath() {
@@ -41,10 +52,7 @@ export default class ConfigProvider implements IConfig {
     }
 
     public static loadConfigFromFile(configPath: string): IConfig {
-        const parser = new Parser();
-        //console.log("reading config from", configPath);
-        const configString = parser.read(configPath);
-        return <IConfig>ConfigProvider.createConfig(parser.translate(configString))
+        return <IConfig>ConfigProvider.createConfig(ConfigProvider.load(configPath))
     };
 
     private static createConfig(argv: any): IConfig {
