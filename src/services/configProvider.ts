@@ -43,12 +43,16 @@ export default class ConfigProvider implements IConfig {
         return this.config.stage || "local";
     }
 
-    get provider() {
-        return this.config.provider;
+    get ethProvider() {
+        return this.config.ethProvider;
     }
 
     get tokenAddress() {
         return this.config.tokenAddress;
+    }
+
+    get jwtPrivateKey() {
+        return this.config.jwtPrivateKey;
     }
 
     public static loadConfigFromFile(configPath: string): IConfig {
@@ -62,7 +66,7 @@ export default class ConfigProvider implements IConfig {
             stage: argv.stage,
             seed: argv.seed,
             gasPrice: argv.gasPrice,
-            provider: argv.provider,
+            ethProvider: argv.ethProvider,
             tokenAddress: argv.tokenAddress
         };
     };
