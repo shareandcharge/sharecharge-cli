@@ -8,7 +8,7 @@ import { stat } from "fs";
 @injectable()
 export default class LocationsProvider {
 
-    private locations: any;
+    private locations: any[];
 
     constructor(@inject(Symbols.ConfigProvider) private configProvider: IConfig) {
         this.locations = LocationsProvider.loadLocationsFromPath(this.configProvider.locationsPath);

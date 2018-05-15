@@ -19,23 +19,37 @@ export default class CdrLogic extends LogicBase {
 
         // filtering
         const filter = {};
+        if (argv.scId) {
+            console.log("Filtered by sc Id");
+            filter['scId'] = argv.scId.toLowerCase();
+        }
+        if (argv.evseId) {
+            console.log('Filtered by evse');
+            const evseHex = ToolKit.asciiToHex(argv.evseId);
+            const evsePadded = evseHex.padEnd(66, '0');
+            filter['evseId'] = evsePadded;
+        }
         if (argv.controller) {
             console.log("Filtered by controller");
             filter['controller'] = argv.controller.toLowerCase();
         }
-        if(argv.tokenAddress) {
+        if (argv.tokenAddress) {
             console.log("Filtered by token address");
             filter['tokenAddress'] = argv.tokenAddress.toLowerCase();
         }
-        if(argv.scId) {
-            console.log("Filtered by sc Id");
-            filter['scId'] = argv.scId.toLowerCase();
+        if (argv.start || argv.end) {
+            const start = Math.round(new Date(argv.start).getTime() / 1000 || 0);
+            const end = Math.round(new Date(argv.end).getTime() / 1000 || Date.now() / 1000);
+            console.log("Filtered by date:", start, 'to', end);
+            filter['timestamp'] = { start, end };
+            console.log(filter);
         }
 
         const logDetails = await this.core.sc.charging.contract.getLogs('ChargeDetailRecord', filter);
         let allLogs: any = logDetails.map(obj => (
             {
-                date: new Date(obj.timestamp * 1000).toUTCString(),
+                timestamp: obj.returnValues.timestamp,
+                date: new Date(obj.returnValues.timestamp * 1000).toUTCString(),
                 evseId: ToolKit.hexToString(obj.returnValues.evseId),
                 scId: obj.returnValues.scId,
                 controller: obj.returnValues.controller,
@@ -46,36 +60,6 @@ export default class CdrLogic extends LogicBase {
             }
 
         ));
-
-        // filtering
-        // if (argv.transactionHash) {
-        //     allLogs = allLogs.filter(log => (
-        //         log.transactionHash === argv.transactionHash
-        //     ));
-        //     // console.log("Filtered by transaction hash");
-        // }
-
-        // if (argv.evseId) {
-        //     allLogs = allLogs.filter(log => (
-        //         log.evseId === argv.evseId
-        //     ));
-        //     // console.log("Filtered by EVSE ID");
-        // }
-
-        // if (argv.timestamp) {
-        //     allLogs = allLogs.filter(log => (
-        //         log.timestamp === argv.timestamp
-        //     ));
-        //     // console.log("Filtered by timestamp");
-        // }
-
-        // if (argv.date) {
-        //     let date = new Date(argv.date).getTime() / 1000;
-        //     allLogs = allLogs.filter(log => (
-        //         log.timestamp >= date
-        //     ));
-        //     // console.log("Filtered by date");
-        // }
 
         return allLogs;
     }

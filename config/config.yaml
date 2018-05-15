@@ -6,6 +6,6 @@
   # msp seed ending 'cool'; 
   # cpo seed ending 'warm'; 
   # driver seed ending 'cold';
-  seed: "filter march urge naive sauce distance under copy payment slow just cold"
+  seed: "filter march urge naive sauce distance under copy payment slow just warm"
   gasPrice: 2
-  tokenAddress: '0xC122488EFB0C4952EC3EfA356E62Bd3329784b1d'
+  tokenAddress: '0x70ce32421Eb99e4AE7D3D5410ebC47F72badC0aD'

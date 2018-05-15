@@ -26,7 +26,7 @@ export default class Core {
         return this.shareChargeProvider.obtain(this.configProvider);
     }
 
-    get locations(): Location {
+    get locations(): any[] {
         return this.locationsProvider.getLocations();
     }
 

@@ -10,27 +10,25 @@ exports.default = (yargs) => {
         .demandCommand(1)
         .command("info", "Query and filter Charge Detail Records issued by Charge Point Operators", (yargs) => {
         yargs
-            .option("scId", {
-            alias: "s",
-            describe: "Filter by Share & Charge location ID"
-        })
-            .option("evseId", {
-            alias: "e",
-            describe: "Filter by EVSE ID"
+            .option("transactionHash", {
+            alias: "x",
+            describe: "Filter by transactionHash"
         })
             .option("controller", {
             alias: "c",
             describe: "Filter by controller (driver)"
         })
+            .option("evseId", {
+            alias: "e",
+            describe: "Filter by EVSE ID"
+        })
             .option("tokenAddress", {
             alias: "t",
-            describe: "Filter by a particular token contract address"
+            describe: "Filter by a particular token contract address",
         })
-            .option("start", {
-            describe: "Filter by start date in YYYY-MM-DD format (e.g. 2018-04-01)"
-        })
-            .option("end", {
-            describe: "Filter by end date in YYYY-MM-DD format (e.g. 2018-04-01)"
+            .option("date", {
+            alias: "d",
+            describe: "Filter by date in YYYY-MM-DD format (e.g. 2018-04-01)",
         });
     }, cdrLogic.getInfo);
 };

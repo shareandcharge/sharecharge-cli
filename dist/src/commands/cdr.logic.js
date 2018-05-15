@@ -24,43 +24,54 @@ class CdrLogic extends logicBase_1.default {
         return __awaiter(this, void 0, void 0, function* () {
             // filtering
             const filter = {};
-            if (argv.scId) {
-                console.log("Filtered by sc Id");
-                filter['scId'] = argv.scId.toLowerCase();
-            }
-            if (argv.evseId) {
-                console.log('Filtered by evse');
-                const evseHex = sharecharge_lib_1.ToolKit.asciiToHex(argv.evseId);
-                const evsePadded = evseHex.padEnd(66, '0');
-                filter['evseId'] = evsePadded;
-            }
             if (argv.controller) {
-                console.log("Filtered by controller");
                 filter['controller'] = argv.controller.toLowerCase();
-            }
-            if (argv.tokenAddress) {
-                console.log("Filtered by token address");
-                filter['tokenAddress'] = argv.tokenAddress.toLowerCase();
-            }
-            if (argv.start || argv.end) {
-                const start = Math.round(new Date(argv.start).getTime() / 1000 || 0);
-                const end = Math.round(new Date(argv.end).getTime() / 1000 || Date.now() / 1000);
-                console.log("Filtered by date:", start, 'to', end);
-                filter['timestamp'] = { start, end };
-                console.log(filter);
             }
             const logDetails = yield this.core.sc.charging.contract.getLogs('ChargeDetailRecord', filter);
             let allLogs = logDetails.map(obj => ({
-                timestamp: obj.timestamp,
                 date: new Date(obj.timestamp * 1000).toUTCString(),
                 evseId: sharecharge_lib_1.ToolKit.hexToString(obj.returnValues.evseId),
                 scId: obj.returnValues.scId,
                 controller: obj.returnValues.controller,
                 finalPrice: obj.returnValues.finalPrice,
-                tokenAddress: obj.returnValues.tokenAddress,
+                tokenContract: obj.returnValues.tokenAddress,
                 chargingContract: obj.address,
                 transactionHash: obj.transactionHash,
             }));
+            // filtering
+            if (argv.transactionHash) {
+                allLogs = allLogs.filter(log => (log.transactionHash === argv.transactionHash));
+                // console.log("Filtered by transaction hash");
+            }
+            // if (argv.controller) {
+            //     allLogs = allLogs.filter(log => (
+            //         log.controller === argv.controller
+            //     ));
+            //     // console.log("Filtered by controller");
+            // }
+            if (argv.scId) {
+                allLogs = allLogs.filter(log => {
+                    log.evseId === argv.evseId;
+                });
+                // console.log("Filtered by Share&Charge Location ID");
+            }
+            if (argv.evseId) {
+                allLogs = allLogs.filter(log => (log.evseId === argv.evseId));
+                // console.log("Filtered by EVSE ID");
+            }
+            if (argv.tokenAddress) {
+                allLogs = allLogs.filter(log => (log.tokenContract === argv.tokenAddress));
+                // console.log("Filtered by e-Mobility Service Provider token");
+            }
+            if (argv.timestamp) {
+                allLogs = allLogs.filter(log => (log.timestamp === argv.timestamp));
+                // console.log("Filtered by timestamp");
+            }
+            if (argv.date) {
+                let date = new Date(argv.date).getTime() / 1000;
+                allLogs = allLogs.filter(log => (log.timestamp >= date));
+                // console.log("Filtered by date");
+            }
             return allLogs;
         });
     }

@@ -14,29 +14,33 @@ export default (yargs) => {
             "Query and filter Charge Detail Records issued by Charge Point Operators",
             (yargs) => {
                 yargs
-                    .option("transactionHash", {
-                        alias: "x",
-                        describe: "Filter by transactionHash"
-                    })
-                    .option("controller", {
-                        alias: "c",
-                        describe: "Filter by controller (driver)"
-                    })
                     .option("scId", {
                         alias: "s",
-                        describe: "Filter by sc id"
+                        describe: "Filter by Share & Charge location ID",
+                        type: 'string'
                     })
                     .option("evseId", {
                         alias: "e",
-                        describe: "Filter by EVSE ID"
+                        describe: "Filter by EVSE ID",
+                        type: 'string'
+                    })
+                    .option("controller", {
+                        alias: "c",
+                        describe: "Filter by controller (driver)",
+                        type: 'string'
                     })
                     .option("tokenAddress", {
                         alias: "t",
                         describe: "Filter by a particular token contract address",
+                        type: 'string'
                     })
-                    .option("date", {
-                        alias: "d",
-                        describe: "Filter by date in YYYY-MM-DD format (e.g. 2018-04-01)",
+                    .option("start", {
+                        describe: "Filter by start date in YYYY-MM-DD format (e.g. 2018-04-01)",
+                        type: 'string'
+                    })
+                    .option("end", {
+                        describe: "Filter by end date in YYYY-MM-DD format (note: not inclusive) (e.g. 2018-04-01)",
+                        type: 'string'
                     })
 
             }, cdrLogic.getInfo)
