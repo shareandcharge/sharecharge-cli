@@ -1,7 +1,7 @@
 import { injectable, inject } from "inversify";
 import * as fs from "fs";
 import * as path from "path";
-import { getConfigDir, IConfig, prepareConfigLocation } from "@motionwerk/sharecharge-config";
+import { getConfigDir, IConfig, prepareConfigLocation } from "@motionwerk/sharecharge-common";
 
 prepareConfigLocation(path.join(__dirname, "/../../config-templates/"), [
     "locations.json",

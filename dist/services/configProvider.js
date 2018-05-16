@@ -12,15 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_1 = require("inversify");
 const fs = require("fs");
 const path = require("path");
-const sharecharge_config_1 = require("@motionwerk/sharecharge-config");
-sharecharge_config_1.prepareConfigLocation(path.join(__dirname, "/../../config-templates/"), [
+const sharecharge_common_1 = require("@motionwerk/sharecharge-common");
+sharecharge_common_1.prepareConfigLocation(path.join(__dirname, "/../../config-templates/"), [
     "locations.json",
     "locations-bs.json",
     "tariffs.json"
 ]);
 let ConfigProvider = ConfigProvider_1 = class ConfigProvider {
     constructor() {
-        this.config = ConfigProvider_1.load(sharecharge_config_1.getConfigDir() + "config.json");
+        this.config = ConfigProvider_1.load(sharecharge_common_1.getConfigDir() + "config.json");
     }
     static load(file) {
         return JSON.parse(fs.readFileSync(file, "UTF8"));

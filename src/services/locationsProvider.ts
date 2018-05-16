@@ -1,7 +1,7 @@
 import { injectable, inject } from "inversify";
 import * as path from "path";
 import * as fs from "fs";
-import { IConfig, getConfigDir } from "@motionwerk/sharecharge-config";
+import { IConfig, getConfigDir } from "@motionwerk/sharecharge-common";
 import { Symbols } from "../symbols";
 
 @injectable()

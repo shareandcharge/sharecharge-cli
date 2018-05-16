@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_1 = require("inversify");
 const path = require("path");
 const fs = require("fs");
-const sharecharge_config_1 = require("@motionwerk/sharecharge-config");
+const sharecharge_common_1 = require("@motionwerk/sharecharge-common");
 const symbols_1 = require("../symbols");
 let TariffsProvider = TariffsProvider_1 = class TariffsProvider {
     constructor(configProvider) {
@@ -23,7 +23,7 @@ let TariffsProvider = TariffsProvider_1 = class TariffsProvider {
         this.tariffs = TariffsProvider_1.loadTariffsFromPath(this.configProvider.tariffsPath);
     }
     static loadTariffsFromPath(tariffsPath) {
-        const fullPath = path.join(sharecharge_config_1.getConfigDir(), tariffsPath);
+        const fullPath = path.join(sharecharge_common_1.getConfigDir(), tariffsPath);
         try {
             fs.statSync(fullPath);
             return require(fullPath);
@@ -40,7 +40,7 @@ let TariffsProvider = TariffsProvider_1 = class TariffsProvider {
 TariffsProvider = TariffsProvider_1 = __decorate([
     inversify_1.injectable(),
     __param(0, inversify_1.inject(symbols_1.Symbols.ConfigProvider)),
-    __metadata("design:paramtypes", [typeof (_a = typeof sharecharge_config_1.IConfig !== "undefined" && sharecharge_config_1.IConfig) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof sharecharge_common_1.IConfig !== "undefined" && sharecharge_common_1.IConfig) === "function" && _a || Object])
 ], TariffsProvider);
 exports.default = TariffsProvider;
 var TariffsProvider_1, _a;

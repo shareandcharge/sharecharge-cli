@@ -1,5 +1,5 @@
 import { ShareCharge, Wallet } from "@motionwerk/sharecharge-lib";
-import { IConfig } from "@motionwerk/sharecharge-config";
+import { IConfig } from "@motionwerk/sharecharge-common";
 import "reflect-metadata";
 import { Symbols } from "./symbols"
 import { Container, injectable, inject } from "inversify";
