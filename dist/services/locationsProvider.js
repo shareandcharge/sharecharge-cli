@@ -14,15 +14,16 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_1 = require("inversify");
 const path = require("path");
-const symbols_1 = require("../symbols");
 const fs = require("fs");
+const sharecharge_config_1 = require("@motionwerk/sharecharge-config");
+const symbols_1 = require("../symbols");
 let LocationsProvider = LocationsProvider_1 = class LocationsProvider {
     constructor(configProvider) {
         this.configProvider = configProvider;
         this.locations = LocationsProvider_1.loadLocationsFromPath(this.configProvider.locationsPath);
     }
     static loadLocationsFromPath(locationsPath) {
-        const fullPath = path.join(__dirname, locationsPath);
+        const fullPath = path.join(sharecharge_config_1.getConfigDir(), locationsPath);
         try {
             fs.statSync(fullPath);
             return require(fullPath);
@@ -48,8 +49,8 @@ let LocationsProvider = LocationsProvider_1 = class LocationsProvider {
 LocationsProvider = LocationsProvider_1 = __decorate([
     inversify_1.injectable(),
     __param(0, inversify_1.inject(symbols_1.Symbols.ConfigProvider)),
-    __metadata("design:paramtypes", [Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof sharecharge_config_1.IConfig !== "undefined" && sharecharge_config_1.IConfig) === "function" && _a || Object])
 ], LocationsProvider);
 exports.default = LocationsProvider;
-var LocationsProvider_1;
+var LocationsProvider_1, _a;
 //# sourceMappingURL=locationsProvider.js.map

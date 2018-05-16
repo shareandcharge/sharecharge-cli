@@ -11,10 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_1 = require("inversify");
 const fs = require("fs");
+const path = require("path");
 const sharecharge_config_1 = require("@motionwerk/sharecharge-config");
+sharecharge_config_1.prepareConfigLocation(path.join(__dirname, "/../../config-templates/"), [
+    "locations.json",
+    "locations-bs.json",
+    "tariffs.json"
+]);
 let ConfigProvider = ConfigProvider_1 = class ConfigProvider {
     constructor() {
-        this.config = ConfigProvider_1.load(sharecharge_config_1.default() + "/config.json");
+        this.config = ConfigProvider_1.load(sharecharge_config_1.getConfigDir() + "config.json");
     }
     static load(file) {
         return JSON.parse(fs.readFileSync(file, "UTF8"));
@@ -34,11 +40,14 @@ let ConfigProvider = ConfigProvider_1 = class ConfigProvider {
     get stage() {
         return this.config.stage || "local";
     }
-    get provider() {
-        return this.config.provider;
+    get ethProvider() {
+        return this.config.ethProvider;
     }
     get tokenAddress() {
         return this.config.tokenAddress;
+    }
+    get jwtPrivateKey() {
+        return this.config.jwtPrivateKey;
     }
     static loadConfigFromFile(configPath) {
         return ConfigProvider_1.createConfig(ConfigProvider_1.load(configPath));
@@ -51,7 +60,7 @@ let ConfigProvider = ConfigProvider_1 = class ConfigProvider {
             stage: argv.stage,
             seed: argv.seed,
             gasPrice: argv.gasPrice,
-            provider: argv.provider,
+            ethProvider: argv.ethProvider,
             tokenAddress: argv.tokenAddress
         };
     }

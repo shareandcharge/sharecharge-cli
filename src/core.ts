@@ -1,4 +1,5 @@
 import { ShareCharge, Wallet } from "@motionwerk/sharecharge-lib";
+import { IConfig } from "@motionwerk/sharecharge-config";
 import "reflect-metadata";
 import { Symbols } from "./symbols"
 import { Container, injectable, inject } from "inversify";
@@ -8,8 +9,6 @@ import WalletProvider from "./services/walletProvider";
 import LocationsProvider from "./services/locationsProvider";
 import TariffsProvider from "./services/tariffsProvider";
 
-import IConfig from "../../sharecharge-config/src/iConfig";
-
 @injectable()
 export default class Core {
 
@@ -18,7 +17,7 @@ export default class Core {
     constructor(@inject(Symbols.ConfigProvider) private configProvider: ConfigProvider,
                 @inject(Symbols.ShareChargeProvider) private shareChargeProvider: ShareChargeProvider,
                 @inject(Symbols.LocationsProvider) private locationsProvider: LocationsProvider,
-                @inject(Symbols.TariffsProvider) private tariffsProvider: TariffsProvider,                
+                @inject(Symbols.TariffsProvider) private tariffsProvider: TariffsProvider,
                 @inject(Symbols.WalletProvider) private walletProvider: WalletProvider) {
     }
 

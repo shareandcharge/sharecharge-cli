@@ -29,6 +29,13 @@ class StoreLogic extends logicBase_1.default {
                 console.log(`${res.locId}\nscId: ${res.scId}\nipfs: ${res.ipfs}\n`);
             }
         };
+        this.getIds = async (argv) => {
+            const cpo = argv.cpo || this.core.wallet.keychain[0].address;
+            const ids = await this.core.sc.store.getIdsByCPO(cpo);
+            for (const id of ids) {
+                console.log(id);
+            }
+        };
         this.getLocation = async (argv) => {
             const cpo = argv.cpo || this.core.wallet.keychain[0].address;
             if (argv.id) {
