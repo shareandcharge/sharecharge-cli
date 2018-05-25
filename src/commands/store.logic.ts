@@ -76,4 +76,9 @@ export default class StoreLogic extends LogicBase {
         console.log(JSON.stringify(result, null, 2));
     }
 
+    public getOwner = async (argv) => {
+        const owner = await this.core.sc.store.getOwnerOfLocation(argv.scId);
+        console.log(owner);
+    }
+
 }
