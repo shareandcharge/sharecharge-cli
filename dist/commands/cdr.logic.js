@@ -4,7 +4,7 @@ const logicBase_1 = require("../logicBase");
 const sharecharge_lib_1 = require("@motionwerk/sharecharge-lib");
 class CdrLogic extends logicBase_1.default {
     constructor() {
-        super();
+        super(...arguments);
         this.getInfo = async (argv) => {
             if (!argv.json) {
                 const cdrInfo = await this.getCDRInfo(argv);
