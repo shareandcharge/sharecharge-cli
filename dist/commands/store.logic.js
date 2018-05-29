@@ -69,6 +69,10 @@ class StoreLogic extends logicBase_1.default {
             const result = await this.core.sc.store.getTariffsByCPO(cpo);
             console.log(JSON.stringify(result, null, 2));
         };
+        this.getOwner = async (argv) => {
+            const owner = await this.core.sc.store.getOwnerOfLocation(argv.scId);
+            console.log(owner);
+        };
     }
 }
 exports.default = StoreLogic;

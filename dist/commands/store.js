@@ -48,6 +48,13 @@ exports.default = (yargs) => {
             alias: 'c',
             describe: 'address of the Charge Point Operator (default: your wallet)'
         });
-    }, storeLogic.getTariffs);
+    }, storeLogic.getTariffs)
+        .command("get-owner", "Retrieve owner of the location", (yargs) => {
+        yargs
+            .option("sc-id", {
+            alias: 's',
+            describe: 'The unique Share&Charge identifier for the location'
+        });
+    }, storeLogic.getOwner);
 };
 //# sourceMappingURL=store.js.map
