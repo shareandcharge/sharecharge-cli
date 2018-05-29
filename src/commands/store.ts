@@ -60,6 +60,18 @@ export default (yargs) => {
 
             }, storeLogic.addTariffs)
 
+        .command("update-tariffs",
+            "Update tariffs data on the Share&Charge EV Network",
+            (yargs) => {
+
+                yargs
+                    .option("file", {
+                        alias: 'f',
+                        describe: 'json file path containing tariffs data',
+                    })
+
+            }, storeLogic.updateTariffs)
+
         .command("get-tariffs",
             "Retrieve CPO tariffs from the Share&Charge EV Network",
             (yargs) => {

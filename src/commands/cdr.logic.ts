@@ -4,10 +4,6 @@ import { ToolKit } from '@motionwerk/sharecharge-lib';
 
 export default class CdrLogic extends LogicBase {
 
-    constructor() {
-        super();
-    }
-
     public getInfo = async (argv) => {
         if (!argv.json) {
             const cdrInfo = await this.getCDRInfo(argv);

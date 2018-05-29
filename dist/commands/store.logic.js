@@ -3,17 +3,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const logicBase_1 = require("../logicBase");
 class StoreLogic extends logicBase_1.default {
     constructor() {
-        super();
+        super(...arguments);
         this.addLocation = async (argv) => {
             let locations;
             let results = [];
-            if (argv.file) {
-                const path = '../../../' + argv.file;
-                locations = require(path);
-            }
-            else {
-                locations = this.core.locations || [];
-            }
+            // if (argv.file) {
+            //     const path = '../../../' + argv.file;
+            //     locations = require(path)
+            // } else {
+            //     locations = this.core.locations || [];
+            // }
+            locations = this.core.locations || [];
             for (const location of locations) {
                 try {
                     // result should contain location id from OCPI structure
@@ -48,17 +48,26 @@ class StoreLogic extends logicBase_1.default {
             }
         };
         this.addTariffs = async (argv) => {
-            let tariffs;
-            if (argv.file) {
-                const path = '../../../' + argv.file;
-                tariffs = require(path);
-            }
-            else {
-                tariffs = this.core.tariffs;
-            }
+            // let tariffs;
+            // if (argv.file) {
+            //     const path = '../../../' + argv.file;
+            //     tariffs = require(path);
+            // } else {
+            //     tariffs = this.core.tariffs;
+            // }
             try {
-                const result = await this.core.sc.store.useWallet(this.core.wallet).addTariffs(tariffs);
-                console.log(`Added tariff data\nipfs: ${result}`);
+                console.log(this.core.config);
+                const result = await this.core.sc.store.useWallet(this.core.wallet).addTariffs(this.core.tariffs);
+                console.log(`Added tariffs data\nipfs: ${result}`);
+            }
+            catch (err) {
+                console.log(err.message);
+            }
+        };
+        this.updateTariffs = async (argv) => {
+            try {
+                const result = await this.core.sc.store.useWallet(this.core.wallet).updateTariffs(this.core.tariffs);
+                console.log(`Updated tariffs data\nipfs: ${result}`);
             }
             catch (err) {
                 console.log(err.message);

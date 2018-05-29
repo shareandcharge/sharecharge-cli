@@ -3,9 +3,9 @@
         "id": "BS-Energy-Wallbox-1",
         "type": "ON_STREET",
         "name": "BS Energy 1",
-        "address": "",
+        "address": "Lindenalle 10",
         "city": "Braunschweig",
-        "postal_code": "",
+        "postal_code": "45127",
         "country": "DE",
         "coordinates": {
             "latitude": "52.262678",
@@ -44,9 +44,9 @@
         "id": "BS-Energy-Wallbox-2",
         "type": "ON_STREET",
         "name": "BS Energy 2",
-        "address": "",
+        "address": "Ruettenscheid 120",
         "city": "Braunschweig",
-        "postal_code": "",
+        "postal_code": "45131",
         "country": "DE",
         "coordinates": {
             "latitude": "52.262665",
