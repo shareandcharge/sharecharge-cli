@@ -18,7 +18,7 @@ export default class TokenLogic extends LogicBase {
             console.log(err.message);
         }
 
-    }
+    };
 
     public mint = async (argv) => {
         const owner = await this.isOwner();
@@ -32,18 +32,18 @@ export default class TokenLogic extends LogicBase {
         try {
             await this.core.sc.token.useWallet(this.core.wallet).mint(driver, amount);
             console.log("Funded driver");
-            await this.balance({ driver });
+            await this.balance({driver});
         } catch (err) {
             console.log(err.message);
         }
-    }
-    
+    };
+
     public balance = async (argv) => {
         const driver = argv.driver || this.core.wallet.keychain[0].address;
         const balance = await this.core.sc.token.getBalance(driver);
         console.log(`Balance: ${balance}`);
-    }
-    
+    };
+
     public info = async () => {
         const name = await this.core.sc.token.contract.call("name");
         console.log(`Name:    ${name}`);
@@ -52,10 +52,10 @@ export default class TokenLogic extends LogicBase {
         console.log(`Address: ${this.core.sc.token.address}`);
         const owner = await this.core.sc.token.getOwner();
         console.log(`Owner:   ${owner}`);
-    }
+    };
 
     private isOwner = async () => {
         const owner = await this.core.sc.token.getOwner();
-        return owner.toLowerCase() === this.core.wallet.keychain[0].address;
+        return owner.toLowerCase() === this.core.wallet.keychain[0].address.toLowerCase();
     }
 } 
