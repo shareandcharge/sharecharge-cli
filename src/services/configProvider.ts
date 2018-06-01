@@ -47,6 +47,10 @@ export default class ConfigProvider implements IConfig {
         return this.config.ethProvider;
     }
 
+    get ipfsProvider() {
+        return this.config.ipfsProvider;
+    }
+
     get tokenAddress() {
         return this.config.tokenAddress;
     }
@@ -67,6 +71,7 @@ export default class ConfigProvider implements IConfig {
             seed: argv.seed,
             gasPrice: argv.gasPrice,
             ethProvider: argv.ethProvider,
+            ipfsProvider: argv.ipfsProvider,
             tokenAddress: argv.tokenAddress
         };
     };
