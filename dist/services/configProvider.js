@@ -43,6 +43,9 @@ let ConfigProvider = ConfigProvider_1 = class ConfigProvider {
     get ethProvider() {
         return this.config.ethProvider;
     }
+    get ipfsProvider() {
+        return this.config.ipfsProvider;
+    }
     get tokenAddress() {
         return this.config.tokenAddress;
     }
@@ -61,6 +64,7 @@ let ConfigProvider = ConfigProvider_1 = class ConfigProvider {
             seed: argv.seed,
             gasPrice: argv.gasPrice,
             ethProvider: argv.ethProvider,
+            ipfsProvider: argv.ipfsProvider,
             tokenAddress: argv.tokenAddress
         };
     }
