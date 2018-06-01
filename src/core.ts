@@ -37,7 +37,7 @@ export default class Core {
         return this.walletProvider.obtain();
     }
 
-    get config(): IConfig {
+    get config(): ConfigProvider {
         return this.configProvider;
     }
 

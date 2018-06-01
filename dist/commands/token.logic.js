@@ -51,7 +51,7 @@ class TokenLogic extends logicBase_1.default {
         };
         this.isOwner = async () => {
             const owner = await this.core.sc.token.getOwner();
-            return owner.toLowerCase() === this.core.wallet.keychain[0].address;
+            return owner.toLowerCase() === this.core.wallet.keychain[0].address.toLowerCase();
         };
     }
 }

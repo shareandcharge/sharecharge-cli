@@ -28,6 +28,9 @@ let ConfigProvider = ConfigProvider_1 = class ConfigProvider {
     get locationsPath() {
         return this.config.locationsPath;
     }
+    get bridgePath() {
+        return this.config.bridgePath;
+    }
     get tariffsPath() {
         return this.config.tariffsPath;
     }
@@ -60,6 +63,7 @@ let ConfigProvider = ConfigProvider_1 = class ConfigProvider {
         return {
             locationsPath: argv.locationsPath,
             tariffsPath: argv.tariffsPath,
+            bridgePath: argv.bridgePath,
             stage: argv.stage,
             seed: argv.seed,
             gasPrice: argv.gasPrice,
