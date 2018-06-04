@@ -6,9 +6,9 @@ const chargeLogic = new ChargeLogic();
 export default (yargs) => {
 
     yargs
-    .usage("Usage: sc charging <command> [options]")
-    .config("config", "Path to plaintext config file", ConfigProvider.loadConfigFromFile)
-    .demandCommand(1)
+        .usage("Usage: sc charging <command> [options]")
+        .config("config", "Path to plaintext config file", ConfigProvider.loadConfigFromFile)
+        .demandCommand(1)
 
         .command("request-start",
             "Request a charging session to start at a particular location",
@@ -71,6 +71,22 @@ export default (yargs) => {
                     })
             }, chargeLogic.requestStop)
 
+        .command("reset",
+            "Resets a charging session",
+            (yargs) => {
+                yargs
+                    .option("sc-id", {
+                        alias: 's',
+                        describe: 'The unique Share&Charge identifier for the location',
+                        demand: true
+                    })
+                    .option("evse-id", {
+                        alias: 'e',
+                        describe: 'An identifier for the EVSE at the location',
+                        demand: true
+                    })
+            }, chargeLogic.reset)
+
         .command("confirm-stop",
             "Confirm the end of a charging session at a particular location",
             (yargs) => {
@@ -96,7 +112,7 @@ export default (yargs) => {
                         describe: 'The unique Share&Charge identifier for the location',
                         demand: true
                     })
-                    .option("evse-id",{
+                    .option("evse-id", {
                         alias: 'e',
                         describe: 'An identifier for the EVSE at the location',
                         demand: true
