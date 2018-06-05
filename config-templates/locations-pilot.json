@@ -63,69 +63,6 @@
     "last_updated": "2018-05-31T11:07:00Z"
   },
   {
-    "id": "Cebit-1",
-    "type": "OTHER",
-    "name": "Motionwerk 1",
-    "address": "Rüttenscheider Str. 120",
-    "city": "Essen",
-    "postal_code": "45131",
-    "country": "DE",
-    "coordinates": {
-      "latitude": "51.433012",
-      "longitude": "7.00419"
-    },
-    "evses": [
-      {
-        "uid": "1",
-        "evse_id": "BB-5958-0",
-        "status": "AVAILABLE",
-        "status_schedule": [],
-        "capabilities": [],
-        "connectors": [
-          {
-            "id": "1",
-            "standard": "IEC_61851-1_T2",
-            "format": "CABLE",
-            "power_type": "AC_3_PHASE",
-            "voltage": 224,
-            "amperage": 32,
-            "tariff_id": "666",
-            "last_updated": "2018-05-31T11:07:00Z"
-          }
-        ],
-        "physical_reference": "1",
-        "floor_level": "3",
-        "last_updated": "2018-05-31T11:07:00Z"
-      },
-      {
-        "uid": "2",
-        "evse_id": "BB-5983-3",
-        "status": "AVAILABLE",
-        "status_schedule": [],
-        "capabilities": [],
-        "connectors": [
-          {
-            "id": "1",
-            "standard": "IEC_61851-1_T2",
-            "format": "CABLE",
-            "power_type": "AC_3_PHASE",
-            "voltage": 224,
-            "amperage": 32,
-            "tariff_id": "666",
-            "last_updated": "2018-05-31T11:07:00Z"
-          }
-        ],
-        "physical_reference": "2",
-        "floor_level": "3",
-        "last_updated": "2018-05-31T11:07:00Z"
-      }
-    ],
-    "operator": {
-      "name": "Motionwerk GmbH"
-    },
-    "last_updated": "2018-05-31T11:07:00Z"
-  },
-  {
     "id": "VWFS-1",
     "type": "ON_STREET",
     "name": "02.S95-00310",
@@ -286,6 +223,69 @@
     ],
     "operator": {
       "name": "innogy SE"
+    },
+    "last_updated": "2018-05-31T11:07:00Z"
+  },
+  {
+    "id": "Cebit-1",
+    "type": "OTHER",
+    "name": "CeBIT Showcase",
+    "address": "Hannover Laatzen",
+    "city": "Hannover",
+    "postal_code": "45131",
+    "country": "DE",
+    "coordinates": {
+      "latitude": "50.433012",
+      "longitude": "10.00419"
+    },
+    "evses": [
+      {
+        "uid": "1",
+        "evse_id": "BA 1179-5",
+        "status": "AVAILABLE",
+        "status_schedule": [],
+        "capabilities": [],
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_61851-1_T2",
+            "format": "CABLE",
+            "power_type": "AC_3_PHASE",
+            "voltage": 224,
+            "amperage": 32,
+            "tariff_id": "666",
+            "last_updated": "2018-05-31T11:07:00Z"
+          }
+        ],
+        "physical_reference": "1",
+        "floor_level": "3",
+        "last_updated": "2018-05-31T11:07:00Z"
+      },
+      {
+        "uid": "2",
+        "evse_id": "BA 1169-7",
+        "status": "AVAILABLE",
+        "status_schedule": [],
+        "capabilities": [],
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_61851-1_T2",
+            "format": "CABLE",
+            "power_type": "AC_3_PHASE",
+            "voltage": 224,
+            "amperage": 32,
+            "tariff_id": "666",
+            "last_updated": "2018-05-31T11:07:00Z"
+          }
+        ],
+        "physical_reference": "2",
+        "floor_level": "3",
+        "last_updated": "2018-05-31T11:07:00Z"
+      }
+    ],
+    "operator": {
+      "name": "Innogy SE"
     },
     "last_updated": "2018-05-31T11:07:00Z"
   }

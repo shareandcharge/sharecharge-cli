@@ -1,0 +1,65 @@
+[
+  {
+    "id": "Cebit-1",
+    "type": "OTHER",
+    "name": "CeBIT Showcase",
+    "address": "Hannover Laatzen",
+    "city": "Hannover",
+    "postal_code": "45131",
+    "country": "DE",
+    "coordinates": {
+      "latitude": "50.433012",
+      "longitude": "10.00419"
+    },
+    "evses": [
+      {
+        "uid": "1",
+        "evse_id": "BA 1179-5",
+        "status": "AVAILABLE",
+        "status_schedule": [],
+        "capabilities": [],
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_61851-1_T2",
+            "format": "CABLE",
+            "power_type": "AC_3_PHASE",
+            "voltage": 224,
+            "amperage": 32,
+            "tariff_id": "666",
+            "last_updated": "2018-05-31T11:07:00Z"
+          }
+        ],
+        "physical_reference": "1",
+        "floor_level": "3",
+        "last_updated": "2018-05-31T11:07:00Z"
+      },
+      {
+        "uid": "2",
+        "evse_id": "BA 1169-7",
+        "status": "AVAILABLE",
+        "status_schedule": [],
+        "capabilities": [],
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_61851-1_T2",
+            "format": "CABLE",
+            "power_type": "AC_3_PHASE",
+            "voltage": 224,
+            "amperage": 32,
+            "tariff_id": "666",
+            "last_updated": "2018-05-31T11:07:00Z"
+          }
+        ],
+        "physical_reference": "2",
+        "floor_level": "3",
+        "last_updated": "2018-05-31T11:07:00Z"
+      }
+    ],
+    "operator": {
+      "name": "Innogy SE"
+    },
+    "last_updated": "2018-05-31T11:07:00Z"
+  }
+]
