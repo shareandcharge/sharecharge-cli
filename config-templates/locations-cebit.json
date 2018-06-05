@@ -2,7 +2,7 @@
   {
     "id": "Cebit-1",
     "type": "OTHER",
-    "name": "CeBIT Showcase",
+    "name": "SL00037",
     "address": "Hannover Laatzen",
     "city": "Hannover",
     "postal_code": "45131",
@@ -14,7 +14,7 @@
     "evses": [
       {
         "uid": "1",
-        "evse_id": "BA 1179-5",
+        "evse_id": "BA-1179-5",
         "status": "AVAILABLE",
         "status_schedule": [],
         "capabilities": [],
@@ -36,7 +36,7 @@
       },
       {
         "uid": "2",
-        "evse_id": "BA 1169-7",
+        "evse_id": "BA-1169-7",
         "status": "AVAILABLE",
         "status_schedule": [],
         "capabilities": [],
