@@ -1,0 +1,292 @@
+[
+  {
+    "id": "Motionwerk-1",
+    "type": "OTHER",
+    "name": "Motionwerk 1",
+    "address": "Rüttenscheider Str. 120",
+    "city": "Essen",
+    "postal_code": "45131",
+    "country": "DE",
+    "coordinates": {
+      "latitude": "51.433012",
+      "longitude": "7.00419"
+    },
+    "evses": [
+      {
+        "uid": "1",
+        "evse_id": "BB-5958-0",
+        "status": "AVAILABLE",
+        "status_schedule": [],
+        "capabilities": [],
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_61851-1_T2",
+            "format": "CABLE",
+            "power_type": "AC_3_PHASE",
+            "voltage": 224,
+            "amperage": 32,
+            "tariff_id": "666",
+            "last_updated": "2018-05-31T11:07:00Z"
+          }
+        ],
+        "physical_reference": "1",
+        "floor_level": "3",
+        "last_updated": "2018-05-31T11:07:00Z"
+      },
+      {
+        "uid": "2",
+        "evse_id": "BB-5983-3",
+        "status": "AVAILABLE",
+        "status_schedule": [],
+        "capabilities": [],
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_61851-1_T2",
+            "format": "CABLE",
+            "power_type": "AC_3_PHASE",
+            "voltage": 224,
+            "amperage": 32,
+            "tariff_id": "666",
+            "last_updated": "2018-05-31T11:07:00Z"
+          }
+        ],
+        "physical_reference": "2",
+        "floor_level": "3",
+        "last_updated": "2018-05-31T11:07:00Z"
+      }
+    ],
+    "operator": {
+      "name": "Motionwerk GmbH"
+    },
+    "last_updated": "2018-05-31T11:07:00Z"
+  },
+  {
+    "id": "Cebit-1",
+    "type": "OTHER",
+    "name": "Motionwerk 1",
+    "address": "Rüttenscheider Str. 120",
+    "city": "Essen",
+    "postal_code": "45131",
+    "country": "DE",
+    "coordinates": {
+      "latitude": "51.433012",
+      "longitude": "7.00419"
+    },
+    "evses": [
+      {
+        "uid": "1",
+        "evse_id": "BB-5958-0",
+        "status": "AVAILABLE",
+        "status_schedule": [],
+        "capabilities": [],
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_61851-1_T2",
+            "format": "CABLE",
+            "power_type": "AC_3_PHASE",
+            "voltage": 224,
+            "amperage": 32,
+            "tariff_id": "666",
+            "last_updated": "2018-05-31T11:07:00Z"
+          }
+        ],
+        "physical_reference": "1",
+        "floor_level": "3",
+        "last_updated": "2018-05-31T11:07:00Z"
+      },
+      {
+        "uid": "2",
+        "evse_id": "BB-5983-3",
+        "status": "AVAILABLE",
+        "status_schedule": [],
+        "capabilities": [],
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_61851-1_T2",
+            "format": "CABLE",
+            "power_type": "AC_3_PHASE",
+            "voltage": 224,
+            "amperage": 32,
+            "tariff_id": "666",
+            "last_updated": "2018-05-31T11:07:00Z"
+          }
+        ],
+        "physical_reference": "2",
+        "floor_level": "3",
+        "last_updated": "2018-05-31T11:07:00Z"
+      }
+    ],
+    "operator": {
+      "name": "Motionwerk GmbH"
+    },
+    "last_updated": "2018-05-31T11:07:00Z"
+  },
+  {
+    "id": "VWFS-1",
+    "type": "ON_STREET",
+    "name": "02.S95-00310",
+    "address": "Schmalbachstraße 1",
+    "city": "Braunschweig",
+    "postal_code": "38112",
+    "country": "DE",
+    "coordinates": {
+      "latitude": "52.297237",
+      "longitude": "10.514538"
+    },
+    "evses": [
+      {
+        "uid": "1",
+        "evse_id": "BB-4598-2",
+        "status": "AVAILABLE",
+        "status_schedule": [],
+        "capabilities": [],
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_61851-1_T2",
+            "format": "CABLE",
+            "power_type": "AC_3_PHASE",
+            "voltage": 224,
+            "amperage": 32,
+            "tariff_id": "666",
+            "last_updated": "2018-05-31T11:07:00Z"
+          }
+        ],
+        "physical_reference": "1",
+        "floor_level": "0",
+        "last_updated": "2018-05-31T11:07:00Z"
+      }
+    ],
+    "operator": {
+      "name": "VOLIM Volkswagen Immobilien"
+    },
+    "last_updated": "2018-05-31T11:07:00Z"
+  },
+  {
+    "id": "VWFS-2",
+    "type": "ON_STREET",
+    "name": "02.S95-00312",
+    "address": "Schmalbachstraße 1",
+    "city": "Braunschweig",
+    "postal_code": "38112",
+    "country": "DE",
+    "coordinates": {
+      "latitude": "52.297237",
+      "longitude": "10.514538"
+    },
+    "evses": [
+      {
+        "uid": "1",
+        "evse_id": "BB-4606-5",
+        "status": "AVAILABLE",
+        "status_schedule": [],
+        "capabilities": [],
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_61851-1_T2",
+            "format": "CABLE",
+            "power_type": "AC_3_PHASE",
+            "voltage": 224,
+            "amperage": 32,
+            "tariff_id": "666",
+            "last_updated": "2018-05-31T11:07:00Z"
+          }
+        ],
+        "physical_reference": "1",
+        "floor_level": "0",
+        "last_updated": "2018-05-31T11:07:00Z"
+      }
+    ],
+    "operator": {
+      "name": "VOLIM Volkswagen Immobilien"
+    },
+    "last_updated": "2018-05-31T11:07:00Z"
+  },
+  {
+    "id": "VWFS-3",
+    "type": "ON_STREET",
+    "name": "02.S95-00311",
+    "address": "Schmalbachstraße 1",
+    "city": "Braunschweig",
+    "postal_code": "38112",
+    "country": "DE",
+    "coordinates": {
+      "latitude": "52.297237",
+      "longitude": "10.514538"
+    },
+    "evses": [
+      {
+        "uid": "1",
+        "evse_id": "BB-4616-3",
+        "status": "AVAILABLE",
+        "status_schedule": [],
+        "capabilities": [],
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_61851-1_T2",
+            "format": "CABLE",
+            "power_type": "AC_3_PHASE",
+            "voltage": 224,
+            "amperage": 32,
+            "tariff_id": "666",
+            "last_updated": "2018-05-31T11:07:00Z"
+          }
+        ],
+        "physical_reference": "1",
+        "floor_level": "0",
+        "last_updated": "2018-05-31T11:07:00Z"
+      }
+    ],
+    "operator": {
+      "name": "VOLIM Volkswagen Immobilien"
+    },
+    "last_updated": "2018-05-31T11:07:00Z"
+  },
+  {
+    "id": "VWFS-3",
+    "type": "ON_STREET",
+    "name": "BS00056",
+    "address": "Schmalbachstraße 1",
+    "city": "Braunschweig",
+    "postal_code": "38112",
+    "country": "DE",
+    "coordinates": {
+      "latitude": "52.296111",
+      "longitude": "10.51625"
+    },
+    "evses": [
+      {
+        "uid": "1",
+        "evse_id": "BB-4616-3",
+        "status": "AVAILABLE",
+        "status_schedule": [],
+        "capabilities": [],
+        "connectors": [
+          {
+            "id": "1",
+            "standard": "IEC_61851-1_T2",
+            "format": "CABLE",
+            "power_type": "AC_3_PHASE",
+            "voltage": 224,
+            "amperage": 32,
+            "tariff_id": "666",
+            "last_updated": "2018-05-31T11:07:00Z"
+          }
+        ],
+        "physical_reference": "1",
+        "floor_level": "0",
+        "last_updated": "2018-05-31T11:07:00Z"
+      }
+    ],
+    "operator": {
+      "name": "innogy SE"
+    },
+    "last_updated": "2018-05-31T11:07:00Z"
+  }
+]
