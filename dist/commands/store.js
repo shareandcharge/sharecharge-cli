@@ -34,8 +34,6 @@ exports.default = (yargs) => {
         })
             .string("_");
     }, storeLogic.getLocations)
-        .command("remove-locations", "Remove all locations (charge point) from the Share&Charge EV Network", (yargs) => {
-    }, storeLogic.removeLocations)
         .command("get-location-ids", "Retrieve Share & Charge location IDs", (yargs) => {
         yargs
             .option("cpo", {
@@ -44,6 +42,8 @@ exports.default = (yargs) => {
         })
             .string("_");
     }, storeLogic.getLocationIds)
+        .command("remove-locations", "Remove all locations (charge point) from the Share&Charge EV Network", (yargs) => {
+    }, storeLogic.removeLocations)
         .command("add-tariffs", "Add tariffs data on the Share&Charge EV Network", (yargs) => {
         yargs
             .option("file", {

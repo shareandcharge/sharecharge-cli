@@ -62,16 +62,16 @@ class StoreLogic extends logicBase_1.default {
             }
         };
         this.removeLocations = async (argv) => {
-            let locations;
             let results = [];
-            locations = this.core.locations || [];
             const evLocations = await this.core.sc.store.getLocationsByCPO(this.core.wallet.keychain[0].address);
             for (const evLocation of evLocations) {
                 try {
-                    // result should contain location id from OCPI structure
-                    const result = await this.core.sc.store.useWallet(this.core.wallet)
-                        .removeLocation(evLocation.scId);
-                    results.push(result);
+                    if (evLocation.data) {
+                        // result should contain location id from OCPI structure
+                        const result = await this.core.sc.store.useWallet(this.core.wallet)
+                            .removeLocation(evLocation.scId);
+                        results.push(result);
+                    }
                 }
                 catch (err) {
                     console.log(err.message);
