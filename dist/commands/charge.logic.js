@@ -43,6 +43,15 @@ class ChargeLogic extends logicBase_1.default {
                 console.log(err.message);
             }
         };
+        this.reset = async (argv) => {
+            try {
+                await this.core.sc.charging.useWallet(this.core.wallet).reset(argv.scId, argv.evseId);
+                console.log(`Successfully reset session on scId: ${argv.scId}, evseId: ${argv.evseId}`);
+            }
+            catch (err) {
+                console.log(err.message);
+            }
+        };
         this.chargeDetailRecord = async (argv) => {
             try {
                 await this.core.sc.charging.useWallet(this.core.wallet).chargeDetailRecord(argv.scId, argv.evseId, argv.finalPrice);

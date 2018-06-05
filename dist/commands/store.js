@@ -14,15 +14,14 @@ exports.default = (yargs) => {
             alias: 'f',
             describe: 'json file path containing array of location objects',
         });
-    }, storeLogic.addLocation)
-        .command("get-ids", "Retrieve Share & Charge location IDs", (yargs) => {
+    }, storeLogic.addLocations)
+        .command("update-locations", "Update a location (charge point) on the Share&Charge EV Network", (yargs) => {
         yargs
-            .option("cpo", {
-            alias: 'c',
-            describe: 'address of the Charge Point Operator (default: your wallet)'
-        })
-            .string("_");
-    }, storeLogic.getIds)
+            .option("file", {
+            alias: 'f',
+            describe: 'json file path containing array of location objects',
+        });
+    }, storeLogic.updateLocations)
         .command("get-locations", "Retrieve a location (charge point) from the Share&Charge EV Network", (yargs) => {
         yargs
             .option("cpo", {
@@ -34,7 +33,17 @@ exports.default = (yargs) => {
             describe: 'global identifier of a Charge Point'
         })
             .string("_");
-    }, storeLogic.getLocation)
+    }, storeLogic.getLocations)
+        .command("remove-locations", "Remove all locations (charge point) from the Share&Charge EV Network", (yargs) => {
+    }, storeLogic.removeLocations)
+        .command("get-location-ids", "Retrieve Share & Charge location IDs", (yargs) => {
+        yargs
+            .option("cpo", {
+            alias: 'c',
+            describe: 'address of the Charge Point Operator (default: your wallet)'
+        })
+            .string("_");
+    }, storeLogic.getLocationIds)
         .command("add-tariffs", "Add tariffs data on the Share&Charge EV Network", (yargs) => {
         yargs
             .option("file", {

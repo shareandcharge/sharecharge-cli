@@ -60,6 +60,19 @@ exports.default = (yargs) => {
             demand: true
         });
     }, chargeLogic.requestStop)
+        .command("reset", "Resets a charging session", (yargs) => {
+        yargs
+            .option("sc-id", {
+            alias: 's',
+            describe: 'The unique Share&Charge identifier for the location',
+            demand: true
+        })
+            .option("evse-id", {
+            alias: 'e',
+            describe: 'An identifier for the EVSE at the location',
+            demand: true
+        });
+    }, chargeLogic.reset)
         .command("confirm-stop", "Confirm the end of a charging session at a particular location", (yargs) => {
         yargs
             .option("sc-id", {
