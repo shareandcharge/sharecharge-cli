@@ -41,6 +41,15 @@ export default class ChargeLogic extends LogicBase {
         }
     };
 
+    public getSession = async (argv) => {
+        try {
+            const session = await this.core.sc.charging.getSession(argv.scId, argv.evseId);
+            console.log(session);
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
     public reset = async (argv) => {
         try {
             await this.core.sc.charging.useWallet(this.core.wallet).reset(argv.scId, argv.evseId);
