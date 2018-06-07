@@ -1,15 +1,15 @@
 [
   {
-    "id": "Cebit-1",
+    "id": "CeBIT-1",
     "type": "OTHER",
-    "name": "SL00037",
+    "name": "CeBIT 1",
     "address": "Hannover Laatzen",
     "city": "Hannover",
     "postal_code": "45131",
     "country": "DE",
     "coordinates": {
-      "latitude": "50.433012",
-      "longitude": "10.00419"
+      "latitude": "52.324111",
+      "longitude": "9.800507"
     },
     "evses": [
       {
@@ -33,9 +33,28 @@
         "physical_reference": "1",
         "floor_level": "3",
         "last_updated": "2018-05-31T11:07:00Z"
-      },
+      }
+    ],
+    "operator": {
+      "name": "Innogy SE"
+    },
+    "last_updated": "2018-05-31T11:07:00Z"
+  },
+  {
+    "id": "CeBIT-2",
+    "type": "OTHER",
+    "name": "CeBIT 2",
+    "address": "Hannover Laatzen",
+    "city": "Hannover",
+    "postal_code": "45131",
+    "country": "DE",
+    "coordinates": {
+      "latitude": "52.324100",
+      "longitude": "9.800500"
+    },
+    "evses": [
       {
-        "uid": "2",
+        "uid": "1",
         "evse_id": "BA-1169-7",
         "status": "AVAILABLE",
         "status_schedule": [],
@@ -52,7 +71,7 @@
             "last_updated": "2018-05-31T11:07:00Z"
           }
         ],
-        "physical_reference": "2",
+        "physical_reference": "1",
         "floor_level": "3",
         "last_updated": "2018-05-31T11:07:00Z"
       }
