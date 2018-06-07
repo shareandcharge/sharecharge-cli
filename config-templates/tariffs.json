@@ -7,7 +7,31 @@
         "price_components": [
           {
             "type": "TIME",
-            "price": 0.02,
+            "price": 200,
+            "step_size": 300
+          }
+        ],
+        "restrictions": {
+          "min_power": 32.00,
+          "max_kwh": 100.00,
+          "day_of_week": [
+            "SATURDAY",
+            "SUNDAY"
+          ]
+        }
+      }
+    ],
+    "last_updated": "2018-05-31T12:10:00Z"
+  },
+  {
+    "id": "999",
+    "currency": "EUR",
+    "elements": [
+      {
+        "price_components": [
+          {
+            "type": "TIME",
+            "price": 300,
             "step_size": 300
           }
         ],

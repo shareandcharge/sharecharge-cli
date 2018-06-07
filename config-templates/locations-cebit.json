@@ -67,7 +67,7 @@
             "power_type": "AC_3_PHASE",
             "voltage": 224,
             "amperage": 32,
-            "tariff_id": "666",
+            "tariff_id": "999",
             "last_updated": "2018-05-31T11:07:00Z"
           }
         ],
