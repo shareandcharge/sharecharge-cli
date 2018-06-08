@@ -123,7 +123,7 @@
     "last_updated": "2018-05-31T11:07:00Z"
   },
   {
-    "id": "VWFS-3",
+    "id": "VWFS-4",
     "type": "ON_STREET",
     "name": "BS00056",
     "address": "Schmalbachstraße 1",
@@ -137,7 +137,7 @@
     "evses": [
       {
         "uid": "1",
-        "evse_id": "BB-4616-3",
+        "evse_id": "BB-3648-6",
         "status": "AVAILABLE",
         "status_schedule": [],
         "capabilities": [],
