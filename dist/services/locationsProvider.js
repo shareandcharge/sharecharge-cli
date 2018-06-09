@@ -12,6 +12,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var LocationsProvider_1;
+"use strict";
 const inversify_1 = require("inversify");
 const path = require("path");
 const fs = require("fs");
@@ -49,8 +51,7 @@ let LocationsProvider = LocationsProvider_1 = class LocationsProvider {
 LocationsProvider = LocationsProvider_1 = __decorate([
     inversify_1.injectable(),
     __param(0, inversify_1.inject(symbols_1.Symbols.ConfigProvider)),
-    __metadata("design:paramtypes", [typeof (_a = typeof sharecharge_common_1.IConfig !== "undefined" && sharecharge_common_1.IConfig) === "function" && _a || Object])
+    __metadata("design:paramtypes", [Object])
 ], LocationsProvider);
 exports.default = LocationsProvider;
-var LocationsProvider_1, _a;
 //# sourceMappingURL=locationsProvider.js.map

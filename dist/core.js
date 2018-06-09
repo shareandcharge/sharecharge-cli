@@ -12,6 +12,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var Core_1;
+"use strict";
 require("reflect-metadata");
 const symbols_1 = require("./symbols");
 const inversify_1 = require("inversify");
@@ -76,5 +78,4 @@ Core = Core_1 = __decorate([
         walletProvider_1.default])
 ], Core);
 exports.default = Core;
-var Core_1;
 //# sourceMappingURL=core.js.map
