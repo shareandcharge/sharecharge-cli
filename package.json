@@ -24,6 +24,7 @@
   "dependencies": {
     "@motionwerk/sharecharge-common": "^1.4.0",
     "@motionwerk/sharecharge-lib": "^0.4.17",
+    "chalk": "^2.4.1",
     "inversify": "^4.13.0",
     "js-yaml": "^3.12.0",
     "reflect-metadata": "^0.1.12",

@@ -1,5 +1,6 @@
 import { ShareCharge } from "@motionwerk/sharecharge-lib";
-import LogicBase from "../logicBase"
+import LogicBase from "../logicBase";
+import chalk from "chalk";
 
 export default class TokenLogic extends LogicBase {
 
@@ -12,10 +13,10 @@ export default class TokenLogic extends LogicBase {
         try {
             const result = await this.core.sc.token.useWallet(this.core.wallet).deploy(name, symbol);
             await this.core.sc.token.useWallet(this.core.wallet).setAccess(charging);
-            console.log(`New contract created at address ${result}`);
+            console.log(`New contract created at address ${chalk.blue(result)}`);
             console.log(`Save this address in your config under "tokenAddress" to use it`);
         } catch (err) {
-            console.log(err.message);
+            console.log(chalk.red(err.message));
         }
 
     };
@@ -23,7 +24,7 @@ export default class TokenLogic extends LogicBase {
     public mint = async (argv) => {
         const owner = await this.isOwner();
         if (!owner) {
-            console.log("You do not have the permission to mint tokens for this contract");
+            console.log(chalk.red("You do not have the permission to mint tokens for this contract"));
             return;
         }
         const driver = argv.driver;
@@ -31,10 +32,10 @@ export default class TokenLogic extends LogicBase {
 
         try {
             await this.core.sc.token.useWallet(this.core.wallet).mint(driver, amount);
-            console.log("Funded driver");
+            console.log(chalk.blue("Funded driver"));
             await this.balance({driver});
         } catch (err) {
-            console.log(err.message);
+            console.log(chalk.red(err.message));
         }
     };
 
@@ -46,12 +47,12 @@ export default class TokenLogic extends LogicBase {
 
     public info = async () => {
         const name = await this.core.sc.token.contract.call("name");
-        console.log(`Name:    ${name}`);
+        console.log(`Name:    ${chalk.blue(name)}`);
         const symbol = await this.core.sc.token.contract.call("symbol");
-        console.log(`Symbol:  ${symbol}`);
-        console.log(`Address: ${this.core.sc.token.address}`);
+        console.log(`Symbol:  ${chalk.blue(symbol)}`);
+        console.log(`Address: ${chalk.blue(this.core.sc.token.address)}`);
         const owner = await this.core.sc.token.getOwner();
-        console.log(`Owner:   ${owner}`);
+        console.log(`Owner:   ${chalk.blue(owner)}`);
     };
 
     private isOwner = async () => {
