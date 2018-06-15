@@ -1,7 +1,11 @@
 import { ShareCharge } from "@motionwerk/sharecharge-lib";
 import LogicBase from "../logicBase";
 import chalk from "chalk";
+import Inquirer from "../services/inquirer";
+const prompter = new Inquirer();
+// import * as inquirer from "inquirer";
 export default class TokenLogic extends LogicBase {
+    
 
     public deploy = async (argv) => {
 
@@ -39,6 +43,9 @@ export default class TokenLogic extends LogicBase {
     };
 
     public balance = async (argv) => {
+        if(argv.driver === undefined) {
+            const driver = await prompter.question();
+        }
         const driver = argv.driver || this.core.wallet.keychain[0].address;
         const balance = await this.core.sc.token.getBalance(driver);
         console.log(chalk.green(`Balance: ${balance}`));
@@ -58,4 +65,20 @@ export default class TokenLogic extends LogicBase {
         const owner = await this.core.sc.token.getOwner();
         return owner.toLowerCase() === this.core.wallet.keychain[0].address.toLowerCase();
     }
+
+    // public getDriver(){
+    //     const questions = [{
+    //             name: 'driver',
+    //             type: 'input',
+    //             message: 'Please ender driver address: ',
+    //             validate: (val) => {
+    //                 if (val.length){
+    //                     return true;
+    //                 } else {
+    //                     return 'Please enter your username'
+    //                 }
+    //             }
+    //     }];
+    //     return inquirer.prompt(questions);
+    // }
 } 

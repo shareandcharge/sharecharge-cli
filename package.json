@@ -25,6 +25,7 @@
     "@motionwerk/sharecharge-common": "^1.4.0",
     "@motionwerk/sharecharge-lib": "^0.4.17",
     "chalk": "^2.4.1",
+    "inquirer": "^6.0.0",
     "inversify": "^4.13.0",
     "js-yaml": "^3.12.0",
     "readline-sync": "^1.4.9",
