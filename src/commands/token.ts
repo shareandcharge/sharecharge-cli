@@ -47,7 +47,7 @@ export default (yargs) => {
                         type: "string"
                     })
                     .string("_")
-                    .demand("driver");
+                    // .demand("driver");
 
                 yargs
                     .option("amount", {
@@ -55,7 +55,7 @@ export default (yargs) => {
                         describe: "the amount of tokens to fund",
                         type: "number"
                     })
-                    .demand("amount")
+                    // .demand("amount")
             }, tokenLogic.mint)
 
         .command("balance",

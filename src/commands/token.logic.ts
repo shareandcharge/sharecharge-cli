@@ -6,12 +6,18 @@ const prompter = new Inquirer();
 // import * as inquirer from "inquirer";
 export default class TokenLogic extends LogicBase {
     
-
+    
     public deploy = async (argv) => {
 
-        const name = argv.name.join(' ');
-        const symbol = argv.symbol;
-        const charging = argv.charging || this.core.sc.charging.address;
+        let name = argv.name.join(' ');
+        let symbol = argv.symbol;
+        let charging = argv.charging;
+
+        if(name === undefined || symbol === undefined || charging === undefined){
+            name = prompter.getName();
+            symbol = prompter.getSymbol();
+            charging = prompter.getCharging() || this.core.sc.charging.address;
+        }
 
         try {
             const result = await this.core.sc.token.useWallet(this.core.wallet).deploy(name, symbol);
@@ -30,8 +36,13 @@ export default class TokenLogic extends LogicBase {
             console.log(chalk.red("You do not have the permission to mint tokens for this contract"));
             return;
         }
-        const driver = argv.driver;
-        const amount = argv.amount;
+        let driver = argv.driver;
+        let amount = argv.amount;
+
+        if(argv.driver === undefined || argv.amount === undefined){
+            driver = await prompter.getDriver();
+            amount = await prompter.getAmount();
+        }
         
         try {
             await this.core.sc.token.useWallet(this.core.wallet).mint(driver, amount);
@@ -44,7 +55,7 @@ export default class TokenLogic extends LogicBase {
 
     public balance = async (argv) => {
         if(argv.driver === undefined) {
-            const driver = await prompter.question();
+            const driver = await prompter.getDriver();
         }
         const driver = argv.driver || this.core.wallet.keychain[0].address;
         const balance = await this.core.sc.token.getBalance(driver);
@@ -66,19 +77,4 @@ export default class TokenLogic extends LogicBase {
         return owner.toLowerCase() === this.core.wallet.keychain[0].address.toLowerCase();
     }
 
-    // public getDriver(){
-    //     const questions = [{
-    //             name: 'driver',
-    //             type: 'input',
-    //             message: 'Please ender driver address: ',
-    //             validate: (val) => {
-    //                 if (val.length){
-    //                     return true;
-    //                 } else {
-    //                     return 'Please enter your username'
-    //                 }
-    //             }
-    //     }];
-    //     return inquirer.prompt(questions);
-    // }
 } 
