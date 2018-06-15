@@ -1,6 +1,7 @@
 import { ShareCharge } from "@motionwerk/sharecharge-lib";
 import LogicBase from "../logicBase"
-
+import * as readlineSync from "readline-sync";
+import chalk from "chalk";
 export default class StoreLogic extends LogicBase {
 
     public addLocations = async (argv) => {
@@ -159,5 +160,5 @@ export default class StoreLogic extends LogicBase {
         const owner = await this.core.sc.store.getOwnerOfLocation(argv.scId);
         console.log(owner);
     }
-
+    
 }

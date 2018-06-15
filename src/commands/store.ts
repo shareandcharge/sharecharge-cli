@@ -1,5 +1,6 @@
 import StoreLogic from "./store.logic";
 import ConfigProvider from "../services/configProvider";
+import chalk from "chalk";
 
 const storeLogic = new StoreLogic();
 
