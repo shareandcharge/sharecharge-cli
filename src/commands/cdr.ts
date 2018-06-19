@@ -1,5 +1,6 @@
 import CdrLogic from './cdr.logic';
 import ConfigProvider from "../services/configProvider";
+import chalk from "chalk";
 
 const cdrLogic = new CdrLogic();
 

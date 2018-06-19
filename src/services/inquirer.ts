@@ -27,12 +27,12 @@ export default class Inquirer {
         const questions = [{
             name: 'amount',
             type: 'input',
-            message: 'Please enter the amount of tokens to fund: ',
+            message: 'Please enter the amount',
             validate: (val) => {
                 if (val.length){
                     return true;
                 } else {
-                    return 'Please enter the amount of tokens to fund'
+                    return 'Please enter the amount'
                 }
             }
         }];
@@ -97,6 +97,38 @@ export default class Inquirer {
                     return true;
                 } else {
                     return 'Please enter "scId" to get owner of location'
+                }
+            }
+        }];
+        return inquirer.prompt(questions);
+    }
+
+    public getScId() {
+        const questions = [{
+            name: 'scId',
+            type: 'input',
+            message: 'Please enter "scId"',
+            validate: (val) => {
+                if (val.length){
+                    return true;
+                } else {
+                    return 'Please enter "scId"'
+                }
+            }
+        }];
+        return inquirer.prompt(questions);
+    }
+
+    public getEvseId() {
+        const questions = [{
+            name: 'evseId',
+            type: 'input',
+            message: 'Please enter "evseId"',
+            validate: (val) => {
+                if (val.length){
+                    return true;
+                } else {
+                    return 'Please enter "evseId"'
                 }
             }
         }];
