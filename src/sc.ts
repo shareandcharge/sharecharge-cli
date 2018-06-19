@@ -3,6 +3,7 @@ import chargeHandler from "./commands/charge";
 import tokenHandler from "./commands/token";
 import storeHandler from "./commands/store";
 import cdrHandler from "./commands/cdr";
+import walletHandler from "./commands/wallet";
 
 const argv = yargs
     .usage("Usage: sc <command> [options]")
@@ -12,17 +13,10 @@ const argv = yargs
     .option("json", {
         describe: "generate json output"
     })
-    .command("cdr", "Access and filter Charge Detail Records", cdrHandler, (argv) => {
-        yargs.showHelp();
-    })
-    .command("charging", "Control EV charging sessions", chargeHandler, (argv) => {
-        yargs.showHelp();
-    })
-    .command("store", "Add and query data stored on the Share&Charge EV Network", storeHandler, (argv) => {
-        yargs.showHelp();
-    })
-    .command("token", "Deploy and manage a Mobility Service Provider token", tokenHandler, (argv) => {
-        yargs.showHelp();
-    })
+    .command("cdr", "Access and filter Charge Detail Records", cdrHandler, yargs.showHelp)
+    .command("charging", "Control EV charging sessions", chargeHandler, yargs.showHelp)
+    .command("store", "Add and query data stored on the Share & Charge EV Network", storeHandler, yargs.showHelp)
+    .command("token", "Deploy and manage a Mobility Service Provider token", tokenHandler, yargs.showHelp)
+    .command("wallet", "Create and manage a Share & Charge wallet", walletHandler, yargs.showHelp)
     .demandCommand(1)
-    .argv;
+    .argv

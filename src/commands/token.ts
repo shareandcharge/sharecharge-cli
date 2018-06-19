@@ -6,8 +6,7 @@ const tokenLogic = new TokenLogic();
 
 export default (yargs) => {
     yargs
-        .usage("Usage: sc msp <command> [options]")
-        .config("config", "Path to plaintext config file", ConfigProvider.loadConfigFromFile)
+        .usage("Usage: sc token <command> [options]")
         .demandCommand(1)
 
         .command("deploy",

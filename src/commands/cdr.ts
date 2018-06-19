@@ -8,7 +8,6 @@ export default (yargs) => {
 
     yargs
         .usage("Usage: sc cdr <command> [options]")
-        .config("config", "Path to plaintext config file", ConfigProvider.loadConfigFromFile)
         .demandCommand(1)
 
         .command("info",

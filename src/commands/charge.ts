@@ -9,7 +9,6 @@ export default (yargs) => {
 
     yargs
         .usage("Usage: sc charging <command> [options]")
-        .config("config", "Path to plaintext config file", ConfigProvider.loadConfigFromFile)
         .demandCommand(1)
 
         .command("request-start",

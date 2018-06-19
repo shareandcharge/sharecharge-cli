@@ -1,11 +1,9 @@
-import { ShareCharge } from "@motionwerk/sharecharge-lib";
 import LogicBase from "../logicBase";
 import chalk from "chalk";
 import Inquirer from "../services/inquirer";
 const prompter = new Inquirer();
 export default class TokenLogic extends LogicBase {
-    
-    
+
     public deploy = async () => {
 
         const name = (await prompter.getName()).name;

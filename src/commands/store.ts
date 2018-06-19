@@ -7,7 +7,6 @@ const storeLogic = new StoreLogic();
 export default (yargs) => {
     yargs
         .usage("Usage: sc store <command> [options]")
-        .config("config", "Path to plaintext config file", ConfigProvider.loadConfigFromFile)
         .demandCommand(1)
 
         .command("add-locations",
