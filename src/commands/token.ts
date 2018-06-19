@@ -12,30 +12,8 @@ export default (yargs) => {
 
         .command("deploy",
             chalk.yellow("Deploy a new MSP Token Contract (warning: high gas cost!)"),
-            yargs => {
-                yargs
-                    .option("name", {
-                        alias: "n",
-                        describe: "the public name of your token (e.g. My MSP Token)",
-                        type: "array"
-                    })
-                    // .demand("name");
-                
-                yargs
-                    .option("symbol", {
-                        alias: "s",
-                        describe: "the short identifier of your token (e.g. MSP)",
-                        type: "string"
-                    })
-                    // .demand("symbol");
-
-                yargs
-                    .option("charging", {
-                        alias: "c",
-                        describe: "The charging contract to grant access to your MSP token",
-                        type: "string"
-                    })
-            }, tokenLogic.deploy)
+            yargs => {},
+            tokenLogic.deploy)
 
         .command("mint",
         chalk.yellow("Mint tokens for an EV driver"),
