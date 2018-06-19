@@ -11,107 +11,47 @@ export default (yargs) => {
         .demandCommand(1)
 
         .command("add-locations",
-            "Add a location (charge point) on the Share&Charge EV Network",
-            (yargs) => {
-
-                yargs
-                    .option("file", {
-                        alias: 'f',
-                        describe: 'json file path containing array of location objects',
-                    });
-
-            }, storeLogic.addLocations)
+            chalk.yellow("Add a location (charge point) on the Share&Charge EV Network"),
+            (yargs) => {}, 
+            storeLogic.addLocations)
 
         .command("update-locations",
-            "Update a location (charge point) on the Share&Charge EV Network",
-            (yargs) => {
-
-                yargs
-                    .option("file", {
-                        alias: 'f',
-                        describe: 'json file path containing array of location objects',
-                    });
-
-            }, storeLogic.updateLocations)
+        chalk.yellow("Update a location (charge point) on the Share&Charge EV Network"),
+            (yargs) => {}, 
+            storeLogic.updateLocations)
 
         .command("get-locations",
-            "Retrieve a location (charge point) from the Share&Charge EV Network",
-            (yargs) => {
-
-                yargs
-                    .option("cpo", {
-                        alias: 'c',
-                        describe: 'address of the Charge Point Operator (default: your wallet)',
-                    })
-                    .option("id", {
-                        alias: 'i',
-                        describe: 'global identifier of a Charge Point'
-                    })
-                    .string("_")
-            }, storeLogic.getLocations)
+        chalk.yellow("Retrieve a location (charge point) from the Share&Charge EV Network"),
+            (yargs) => {}, 
+            storeLogic.getLocations)
 
         .command("get-location-ids",
-            "Retrieve Share & Charge location IDs",
-            (yargs) => {
-                yargs
-                    .option("cpo", {
-                        alias: 'c',
-                        describe: 'address of the Charge Point Operator (default: your wallet)'
-                    })
-                    .string("_")
-            }, storeLogic.getLocationIds)
+        chalk.yellow("Retrieve Share & Charge location IDs"),
+            (yargs) => {}, 
+            storeLogic.getLocationIds)
 
         .command("remove-locations",
-            "Remove all locations (charge point) from the Share&Charge EV Network",
-            (yargs) => {
-
-            }, storeLogic.removeLocations)
+        chalk.yellow("Remove all locations (charge point) from the Share&Charge EV Network"),
+            (yargs) => {}, 
+            storeLogic.removeLocations)
 
         .command("add-tariffs",
-            "Add tariffs data on the Share&Charge EV Network",
-            (yargs) => {
-
-                yargs
-                    .option("file", {
-                        alias: 'f',
-                        describe: 'json file path containing tariffs data',
-                    })
-
-            }, storeLogic.addTariffs)
+        chalk.yellow("Add tariffs data on the Share&Charge EV Network"),
+            (yargs) => {}, 
+            storeLogic.addTariffs)
 
         .command("update-tariffs",
-            "Update tariffs data on the Share&Charge EV Network",
-            (yargs) => {
-
-                yargs
-                    .option("file", {
-                        alias: 'f',
-                        describe: 'json file path containing tariffs data',
-                    })
-
-            }, storeLogic.updateTariffs)
+        chalk.yellow("Update tariffs data on the Share&Charge EV Network"),
+            (yargs) => {}, 
+            storeLogic.updateTariffs)
 
         .command("get-tariffs",
-            "Retrieve CPO tariffs from the Share&Charge EV Network",
-            (yargs) => {
-
-                yargs
-                    .option("cpo", {
-                        alias: 'c',
-                        describe: 'address of the Charge Point Operator (default: your wallet)'
-                    })
-
-            }, storeLogic.getTariffs)
+        chalk.yellow("Retrieve CPO tariffs from the Share&Charge EV Network"),
+            (yargs) => {}, 
+            storeLogic.getTariffs)
 
         .command("get-owner",
-            "Retrieve owner of the location",
-            (yargs) => {
-
-                yargs
-                    .option("sc-id", {
-                        alias: 's',
-                        describe: 'The unique Share&Charge identifier for the location'
-                    })
-
-            }, storeLogic.getOwner);
+        chalk.yellow("Retrieve owner of the location"),
+            (yargs) => {}, 
+            storeLogic.getOwner);
 }

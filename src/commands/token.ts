@@ -6,7 +6,7 @@ const tokenLogic = new TokenLogic();
 
 export default (yargs) => {
     yargs
-        .usage(chalk.yellow.bold("Usage: sc msp <command> [options]"))
+        .usage("Usage: sc msp <command> [options]")
         .config("config", "Path to plaintext config file", ConfigProvider.loadConfigFromFile)
         .demandCommand(1)
 

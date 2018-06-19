@@ -36,17 +36,13 @@ export default class TokenLogic extends LogicBase {
         try {
             await this.core.sc.token.useWallet(this.core.wallet).mint(driver, amount);
             console.log(chalk.green("Funded driver"));
-            await this.balance(driver);
+            // await this.balance();
         } catch (err) {
             console.log(chalk.red(err.message));
         }
     };
 
-    public balance = async (arg) => {
-        if(arg){
-            const balance = await this.core.sc.token.getBalance(arg);
-            console.log(chalk.green(`Balance: ${balance}`));
-        }
+    public balance = async () => {
         const driver = (await prompter.getDriver()).driver || this.core.wallet.keychain[0].address;
         const balance = await this.core.sc.token.getBalance(driver);
         console.log(chalk.green(`Balance: ${balance}`));

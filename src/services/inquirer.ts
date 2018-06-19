@@ -86,4 +86,20 @@ export default class Inquirer {
         }];
         return inquirer.prompt(questions);
     }
+
+    public getOwner(){
+        const questions = [{
+            name: 'scId',
+            type: 'input',
+            message: 'Please enter "scId" to get owner of location',
+            validate: (val) => {
+                if (val.length){
+                    return true;
+                } else {
+                    return 'Please enter "scId" to get owner of location'
+                }
+            }
+        }];
+        return inquirer.prompt(questions);
+    }
 }

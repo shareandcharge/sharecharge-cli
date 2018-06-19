@@ -1,19 +1,14 @@
 import { ShareCharge } from "@motionwerk/sharecharge-lib";
 import LogicBase from "../logicBase"
 import chalk from "chalk";
+import Inquirer from "../services/inquirer";
+const prompter = new Inquirer();
 export default class StoreLogic extends LogicBase {
 
     public addLocations = async (argv) => {
 
         let locations;
         let results: { locId: string, scId: string, ipfs: string }[] = [];
-
-        // if (argv.file) {
-        //     const path = '../../../' + argv.file;
-        //     locations = require(path)
-        // } else {
-        //     locations = this.core.locations || [];
-        // }
 
         locations = this.core.locations || [];
 
@@ -38,13 +33,6 @@ export default class StoreLogic extends LogicBase {
 
         let locations;
         let results: { locId: string, scId: string, ipfs: string }[] = [];
-
-        // if (argv.file) {
-        //     const path = '../../../' + argv.file;
-        //     locations = require(path)
-        // } else {
-        //     locations = this.core.locations || [];
-        // }
 
         locations = this.core.locations || [];
 
@@ -122,13 +110,6 @@ export default class StoreLogic extends LogicBase {
     };
 
     public addTariffs = async (argv) => {
-        // let tariffs;
-        // if (argv.file) {
-        //     const path = '../../../' + argv.file;
-        //     tariffs = require(path);
-        // } else {
-        //     tariffs = this.core.tariffs;
-        // }
         try {
             console.log(this.core.config);
             const result = await this.core.sc.store.useWallet(this.core.wallet)
@@ -155,9 +136,11 @@ export default class StoreLogic extends LogicBase {
         console.log(JSON.stringify(result, null, 2));
     };
 
-    public getOwner = async (argv) => {
-        const owner = await this.core.sc.store.getOwnerOfLocation(argv.scId);
-        console.log(owner);
+    public getOwner = async () => {
+        const scId = (await prompter.getOwner()).scId;
+        console.log(scId);
+        const owner = await this.core.sc.store.getOwnerOfLocation(scId);
+        console.log("Location owner: ",chalk.green(owner));
     }
     
 }
