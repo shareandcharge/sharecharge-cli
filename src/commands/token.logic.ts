@@ -6,16 +6,11 @@ const prompter = new Inquirer();
 export default class TokenLogic extends LogicBase {
     
     
-    public deploy = async (argv) => {
+    public deploy = async () => {
 
-        const name = argv.name.join(' ');
-        const symbol = argv.symbol;
+        const name = (await prompter.getName()).name;
+        let symbol = (await prompter.getSymbol()).symbol;
         const charging = this.core.sc.charging.address;
-
-        // if(name === undefined || symbol === undefined || charging === undefined){
-        //     name = (await prompter.getName()).name.join;
-        //     symbol = (await prompter.getSymbol()).symbol;
-        // }
 
         try {
             const result = await this.core.sc.token.useWallet(this.core.wallet).deploy(name, symbol);
