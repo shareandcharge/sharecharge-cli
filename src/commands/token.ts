@@ -17,37 +17,13 @@ export default (yargs) => {
 
         .command("mint",
         chalk.yellow("Mint tokens for an EV driver"),
-            yargs => {
-                yargs
-                    .option("driver", {
-                        alias: "d",
-                        describe: "the address of the driver to fund",
-                        type: "string"
-                    })
-                    .string("_")
-                    // .demand("driver");
-
-                yargs
-                    .option("amount", {
-                        alias: "a",
-                        describe: "the amount of tokens to fund",
-                        type: "number"
-                    })
-                    // .demand("amount")
-            }, tokenLogic.mint)
+            yargs => {}, 
+            tokenLogic.mint)
 
         .command("balance",
         chalk.yellow("Check balance of EV driver"),
-            yargs => {
-                yargs
-                    .option("driver", {
-                        alias: "d",
-                        describe: "the address of the driver",
-                        type: "string"
-                    })
-                    .string("_")
-
-            }, tokenLogic.balance)
+            yargs => {}, 
+            tokenLogic.balance)
 
         .command("info",
         chalk.yellow("Check MSP Token information"),
