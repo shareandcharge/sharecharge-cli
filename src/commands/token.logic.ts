@@ -3,21 +3,19 @@ import LogicBase from "../logicBase";
 import chalk from "chalk";
 import Inquirer from "../services/inquirer";
 const prompter = new Inquirer();
-// import * as inquirer from "inquirer";
 export default class TokenLogic extends LogicBase {
     
     
     public deploy = async (argv) => {
 
-        let name = argv.name.join(' ');
-        let symbol = argv.symbol;
-        let charging = argv.charging;
+        const name = argv.name.join(' ');
+        const symbol = argv.symbol;
+        const charging = this.core.sc.charging.address;
 
-        if(name === undefined || symbol === undefined || charging === undefined){
-            name = prompter.getName();
-            symbol = prompter.getSymbol();
-            charging = prompter.getCharging() || this.core.sc.charging.address;
-        }
+        // if(name === undefined || symbol === undefined || charging === undefined){
+        //     name = (await prompter.getName()).name.join;
+        //     symbol = (await prompter.getSymbol()).symbol;
+        // }
 
         try {
             const result = await this.core.sc.token.useWallet(this.core.wallet).deploy(name, symbol);

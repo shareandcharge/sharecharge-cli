@@ -1,6 +1,5 @@
 import { ShareCharge } from "@motionwerk/sharecharge-lib";
 import LogicBase from "../logicBase"
-import * as readlineSync from "readline-sync";
 import chalk from "chalk";
 export default class StoreLogic extends LogicBase {
 

@@ -19,7 +19,7 @@ export default (yargs) => {
                         describe: "the public name of your token (e.g. My MSP Token)",
                         type: "array"
                     })
-                    .demand("name");
+                    // .demand("name");
                 
                 yargs
                     .option("symbol", {
@@ -27,7 +27,7 @@ export default (yargs) => {
                         describe: "the short identifier of your token (e.g. MSP)",
                         type: "string"
                     })
-                    .demand("symbol");
+                    // .demand("symbol");
 
                 yargs
                     .option("charging", {
