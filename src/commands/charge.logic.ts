@@ -68,7 +68,7 @@ export default class ChargeLogic extends LogicBase {
 
         try {
             const session = await this.core.sc.charging.getSession(scId, evseId);
-            console.log(chalk.green(session));
+            console.log(JSON.stringify(session, null, 2));
         } catch (err) {
             console.log(chalk.red(err.message));
         }
