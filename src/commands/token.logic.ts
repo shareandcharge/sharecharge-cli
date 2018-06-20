@@ -29,7 +29,7 @@ export default class TokenLogic extends LogicBase {
         }
 
         const driver = (await prompter.getDriver()).driver;
-        const amount = (await prompter.getAmount()).amount;
+        const amount = (await prompter.getAmount('Enter the amount of tokens to mint for the driver')).amount;
         
         try {
             await this.core.sc.token.useWallet(this.core.wallet).mint(driver, amount);

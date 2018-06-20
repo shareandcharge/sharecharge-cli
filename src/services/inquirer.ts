@@ -1,6 +1,8 @@
 import { injectable } from "inversify";
 import * as inquirer from "inquirer";
 
+const invalidMsg = 'Invalid input';
+
 @injectable()
 export default class Inquirer {
 
@@ -11,28 +13,28 @@ export default class Inquirer {
         const questions = [{
             name: 'driver',
             type: 'input',
-            message: 'Please enter the address of the driver : ',
+            message: 'Enter the address of the driver',
             validate: (val) => {
                 if (val.length){
                     return true;
                 } else {
-                    return 'Please ebter 0the address of the driver '
+                    return invalidMsg;
                 }
             }
         }];
         return inquirer.prompt(questions);
     }
 
-    public getAmount(){
+    public getAmount(message: string) {
         const questions = [{
             name: 'amount',
             type: 'input',
-            message: 'Please enter the amount',
+            message,
             validate: (val) => {
                 if (val.length){
                     return true;
                 } else {
-                    return 'Please enter the amount'
+                    return invalidMsg;
                 }
             }
         }];
@@ -43,12 +45,12 @@ export default class Inquirer {
         const questions = [{
             name: 'name',
             type: 'input',
-            message: 'Please enter the public name of your token (e.g. My MSP Token)',
+            message: 'Enter the name of your token (e.g. My MSP Token)',
             validate: (val) => {
                 if (val.length){
                     return true;
                 } else {
-                    return 'Please enter the public name of your token (e.g. My MSP Token)'
+                    return invalidMsg;
                 }
             }
         }];
@@ -59,12 +61,12 @@ export default class Inquirer {
         const questions = [{
             name: 'symbol',
             type: 'input',
-            message: 'Please enter the short identifier of your token (e.g. MSP)',
+            message: 'Enter a symbol for your token (e.g. MSP)',
             validate: (val) => {
                 if (val.length){
                     return true;
                 } else {
-                    return 'Please enter the short identifier of your token (e.g. MSP)'
+                    return invalidMsg;
                 }
             }
         }];
@@ -75,12 +77,12 @@ export default class Inquirer {
         const questions = [{
             name: 'charging',
             type: 'input',
-            message: 'The charging contract to grant access to your MSP token',
+            message: 'Enter the charging contract to grant access to your MSP token',
             validate: (val) => {
                 if (val.length){
                     return true;
                 } else {
-                    return 'The charging contract to grant access to your MSP token'
+                    return invalidMsg;
                 }
             }
         }];
@@ -91,12 +93,12 @@ export default class Inquirer {
         const questions = [{
             name: 'scId',
             type: 'input',
-            message: 'Please enter "scId" to get owner of location',
+            message: 'Enter a Share & Charge Location ID',
             validate: (val) => {
                 if (val.length){
                     return true;
                 } else {
-                    return 'Please enter "scId" to get owner of location'
+                    return invalidMsg;
                 }
             }
         }];
@@ -107,12 +109,12 @@ export default class Inquirer {
         const questions = [{
             name: 'scId',
             type: 'input',
-            message: 'Please enter "scId"',
+            message: 'Enter a Share & Charge Location ID',
             validate: (val) => {
                 if (val.length){
                     return true;
                 } else {
-                    return 'Please enter "scId"'
+                    return invalidMsg;
                 }
             }
         }];
@@ -123,12 +125,12 @@ export default class Inquirer {
         const questions = [{
             name: 'evseId',
             type: 'input',
-            message: 'Please enter "evseId"',
+            message: 'Enter an EVSE ID',
             validate: (val) => {
                 if (val.length){
                     return true;
                 } else {
-                    return 'Please enter "evseId"'
+                    return invalidMsg;
                 }
             }
         }];
@@ -145,7 +147,7 @@ export default class Inquirer {
                 if (val.length){
                     return true;
                 } else {
-                    return 'Filter Charge Detail Records by'
+                    return invalidMsg;
                 }
             }
         }];
@@ -161,9 +163,36 @@ export default class Inquirer {
                 if (val.length){
                     return true;
                 } else {
-                    return `To filter CDRs please provide ${item}:`;
+                    return `Invalid ${item}:`;
                 }
             }
+        }];
+        return inquirer.prompt(questions);
+    }
+
+    public getTariffType() {
+        const questions = [{
+            name: 'type',
+            type: 'input',
+            message: 'Enter tariff type (options: kwh, time, flat)',
+            validate: (val) => {
+                if (['kwh', 'time', 'flat'].includes(val)) {
+                    return true;
+                } else {
+                    return invalidMsg;
+                }
+            }
+        }];
+        return inquirer.prompt(questions);
+    }
+
+    public getTariffValue(tariffId) {
+        const tariffs = ['energy in kWh',,,'length in minutes']
+        const questions = [{
+            name: 'value',
+            type: 'input',
+            message: `Enter charging session ${tariffs[tariffId]}`,
+            validate: (val) => val.length ? true : invalidMsg
         }];
         return inquirer.prompt(questions);
     }
