@@ -10,6 +10,10 @@ export default class WalletProvider {
     }
 
     public obtain(): Wallet {
+        if (!this.configProvider.seed) {
+            console.log('No seed provided in configuration!');
+            process.exit(0);
+        }
         return new Wallet(this.configProvider.seed)
     }
 }
