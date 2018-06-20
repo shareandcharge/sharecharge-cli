@@ -1,8 +1,8 @@
 import { Wallet } from "@motionwerk/sharecharge-lib"
 import LogicBase from '../logicBase';
 import chalk from "chalk";
-import Inquirer from "../services/inquirer";
-const prompter = new Inquirer();
+// import Inquirer from "../services/inquirer";
+// const prompter = new Inquirer();
 const Web3 = require('web3');
 
 export default class WalletLogic extends LogicBase {
@@ -27,13 +27,11 @@ export default class WalletLogic extends LogicBase {
     }
 
     public balance = async () => {
-        // const web3 = new Web3(this.core.config.ethProvider);
         const balance = await this.web3.eth.getBalance(this.core.wallet.coinbase);
         console.log(`balance: ${balance} Wei (${this.web3.utils.fromWei(balance)} Ether)`);
     }
 
     public fund = async () => {
-        // const web3 = new Web3(this.core.config.ethProvider);
         const coinbase = await this.web3.eth.getCoinbase();
         await this.web3.eth.sendTransaction({ from: coinbase, to: this.core.wallet.coinbase, value: this.web3.utils.toWei('1') });
         console.log('funded wallet 1 ether');
