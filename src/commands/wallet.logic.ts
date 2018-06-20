@@ -7,6 +7,13 @@ const Web3 = require('web3');
 
 export default class WalletLogic extends LogicBase {
 
+    web3;
+
+    constructor() {
+        super();
+        this.web3 = new Web3(this.core.config.ethProvider);
+    }
+
     public create = () => {
         const newWallet = Wallet.generate();
         console.log('Wallet created. Update the seed in your configuration to use.');
@@ -14,20 +21,21 @@ export default class WalletLogic extends LogicBase {
         console.log(`seed:     ${chalk.blue(newWallet.seed)}`);
     } 
 
-    public info = () => {
-        console.log('coinbase:', this.core.wallet.coinbase);
+    public info = async () => {
+        console.log(`coinbase: ${this.core.wallet.coinbase}`);
+        console.log(`tx count: ${await this.web3.eth.getTransactionCount(this.core.wallet.coinbase)}`);
     }
 
     public balance = async () => {
-        const web3 = new Web3(this.core.config.ethProvider);
-        const balance = await web3.eth.getBalance(this.core.wallet.coinbase);
-        console.log('balance:', balance);
+        // const web3 = new Web3(this.core.config.ethProvider);
+        const balance = await this.web3.eth.getBalance(this.core.wallet.coinbase);
+        console.log(`balance: ${balance} Wei (${this.web3.utils.fromWei(balance)} Ether)`);
     }
 
     public fund = async () => {
-        const web3 = new Web3(this.core.config.ethProvider);
-        const coinbase = await web3.eth.getCoinbase();
-        await web3.eth.sendTransaction({ from: coinbase, to: this.core.wallet.coinbase, value: web3.utils.toWei('1') });
+        // const web3 = new Web3(this.core.config.ethProvider);
+        const coinbase = await this.web3.eth.getCoinbase();
+        await this.web3.eth.sendTransaction({ from: coinbase, to: this.core.wallet.coinbase, value: this.web3.utils.toWei('1') });
         console.log('funded wallet 1 ether');
     }
 
