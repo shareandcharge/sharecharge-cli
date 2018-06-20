@@ -134,4 +134,37 @@ export default class Inquirer {
         }];
         return inquirer.prompt(questions);
     }
+
+    public filterBy() {
+        const questions = [{
+            name: 'filter',
+            type: 'checkbox',
+            message: 'Filter Charge Detail Records by:',
+            choices:['scId', 'evseId', 'controller', 'tokenAddress', 'start', 'end'],
+            validate: (val) => {
+                if (val.length){
+                    return true;
+                } else {
+                    return 'Filter Charge Detail Records by'
+                }
+            }
+        }];
+        return inquirer.prompt(questions);
+    }
+
+    public getInput(item) {
+        const questions = [{
+            name: 'filter',
+            type: 'input',
+            message: `To filter CDRs please provide ${item}:`,
+            validate: (val) => {
+                if (val.length){
+                    return true;
+                } else {
+                    return `To filter CDRs please provide ${item}:`;
+                }
+            }
+        }];
+        return inquirer.prompt(questions);
+    }
 }
