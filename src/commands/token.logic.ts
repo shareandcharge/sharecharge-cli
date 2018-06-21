@@ -6,8 +6,8 @@ export default class TokenLogic extends LogicBase {
 
     public deploy = async () => {
 
-        const name = (await prompter.getName()).name;
-        let symbol = (await prompter.getSymbol()).symbol;
+        const name = (await prompter.getAnswer('Enter the name of your token (e.g. My MSP Token)')).answer;
+        let symbol = (await prompter.getAnswer('Enter a symbol for your token (e.g. MSP)')).answer;
         const charging = this.core.sc.charging.address;
 
         try {
@@ -16,7 +16,7 @@ export default class TokenLogic extends LogicBase {
             console.log(`New contract created at address ${chalk.green(result)}`);
             console.log(chalk.yellow(`Save this address in your config under "tokenAddress" to use it`));
         } catch (err) {
-            console.log(chalk.red(err.message));
+            console.log(err.message);
         }
 
     };
@@ -28,20 +28,20 @@ export default class TokenLogic extends LogicBase {
             return;
         }
 
-        const driver = (await prompter.getDriver()).driver;
-        const amount = (await prompter.getAmount('Enter the amount of tokens to mint for the driver')).amount;
+        const driver = (await prompter.getAnswer('Enter the address of the driver')).answer;
+        const amount = (await prompter.getAnswer('Enter the amount of tokens to mint for the driver')).answer;
         
         try {
             await this.core.sc.token.useWallet(this.core.wallet).mint(driver, amount);
             console.log(chalk.green("Funded driver"));
             // await this.balance();
         } catch (err) {
-            console.log(chalk.red(err.message));
+            console.log(err.message);
         }
     };
 
     public balance = async () => {
-        const driver = (await prompter.getDriver()).driver || this.core.wallet.keychain[0].address;
+        const driver = (await prompter.getAnswer('Enter the address of the driver')).answer || this.core.wallet.keychain[0].address;
         const balance = await this.core.sc.token.getBalance(driver);
         console.log(chalk.green(`Balance: ${balance}`));
     };

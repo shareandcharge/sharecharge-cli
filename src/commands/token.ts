@@ -15,17 +15,17 @@ export default (yargs) => {
             tokenLogic.deploy)
 
         .command("mint",
-        chalk.yellow("Mint tokens for an EV driver"),
+            chalk.yellow("Mint tokens for an EV driver"),
             yargs => {}, 
             tokenLogic.mint)
 
         .command("balance",
-        chalk.yellow("Check balance of EV driver"),
+            chalk.yellow("Check balance of EV driver"),
             yargs => {}, 
             tokenLogic.balance)
 
         .command("info",
-        chalk.yellow("Check MSP Token information"),
+            chalk.yellow("Check MSP Token information"),
             {},
             tokenLogic.info)
 }

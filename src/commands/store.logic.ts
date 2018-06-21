@@ -137,7 +137,7 @@ export default class StoreLogic extends LogicBase {
     };
 
     public getOwner = async () => {
-        const scId = (await prompter.getOwner()).scId;
+        const scId = (await prompter.getAnswer('Enter a Share & Charge Location ID')).answer;
         console.log(scId);
         const owner = await this.core.sc.store.getOwnerOfLocation(scId);
         console.log("Location owner: ",chalk.green(owner));

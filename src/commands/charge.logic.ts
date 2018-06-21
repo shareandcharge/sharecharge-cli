@@ -15,13 +15,13 @@ export default class ChargeLogic extends LogicBase {
         const tariffType: string = (await prompter.getTariffType()).type[0];
         const tariffId = Tariffs[tariffType];
         const tariffValue = tariffId !== 1 ? (await prompter.getTariffValue(tariffId)).value : 0;
-        const amount = (await prompter.getAmount('Enter estimated charging cost in tokens')).amount;
+        const amount = (await prompter.getAnswer('Enter estimated charging cost in tokens')).answer;
 
         try {
             await this.core.sc.charging.useWallet(this.core.wallet).requestStart(scId, evseId,   tariffId, tariffValue, token, amount);
             console.log("Successfully requested remote start on ", chalk.green(evseId));
         } catch (err) {
-            console.log(chalk.red(err.message));
+            console.log(err.message);
         }
     };
 
@@ -36,7 +36,7 @@ export default class ChargeLogic extends LogicBase {
             await this.core.sc.charging.useWallet(this.core.wallet).confirmStart(scId, evseId, sessionId);
             console.log("Successfully confirmed remote session start on ", chalk.green(evseId));
         } catch (err) {
-            console.log(chalk.red(err.message));
+            console.log(err.message);
         }
     };
 
@@ -51,7 +51,7 @@ export default class ChargeLogic extends LogicBase {
             await this.core.sc.charging.useWallet(this.core.wallet).requestStop(scId, evseId);
             console.log("Succesfully requested remote stop on ", chalk.green(evseId));
         } catch (err) {
-            console.log(chalk.red(err.message));
+            console.log(err.message);
         }
     };
 
@@ -79,7 +79,7 @@ export default class ChargeLogic extends LogicBase {
             const session = await this.core.sc.charging.getSession(scId, evseId);
             console.log(JSON.stringify(session, null, 2));
         } catch (err) {
-            console.log(chalk.red(err.message));
+            console.log(err.message);
         }
     }
 
@@ -103,7 +103,7 @@ export default class ChargeLogic extends LogicBase {
         const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
         const session = await this.core.sc.charging.getSession(scId, evseId);
         const tariffValue = (await prompter.getTariffValue(session.tariffId)).value;
-        const amount = (await prompter.getAmount('Enter final charging cost in tokens')).amount;
+        const amount = (await prompter.getAnswer('Enter final charging cost in tokens')).getAnswer;
 
         try {
             await this.core.sc.charging.useWallet(this.core.wallet).chargeDetailRecord(scId, evseId, tariffValue, amount);

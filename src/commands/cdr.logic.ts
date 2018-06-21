@@ -20,27 +20,6 @@ export default class CdrLogic extends LogicBase {
     async getCDRInfo(argv): Promise<any> {
         
         const filters = {};
-        // filtering
-        if (argv.scId) {
-            filters['scId'] = argv.scId.toLowerCase();
-        }
-
-        if (argv.evseId) {
-            const evseHex = ToolKit.asciiToHex(argv.evseId);
-            const evsePadded = evseHex.padEnd(66, '0');
-            filters['evseId'] = evsePadded;
-        }
-        if (argv.controller) {
-            filters['controller'] = argv.controller.toLowerCase();
-        }
-        if (argv.tokenAddress) {
-            filters['tokenAddress'] = argv.tokenAddress.toLowerCase();
-        }
-        if (argv.start || argv.end) {
-            const start = Math.round(new Date(argv.start).getTime() / 1000 || 0);
-            const end = Math.round(new Date(argv.end).getTime() / 1000 || Date.now() / 1000);
-            filters['timestamp'] = { start, end };
-        }
 
         const logDetails = await this.core.sc.charging.contract.getLogs('ChargeDetailRecord', filters);
         let allLogs: any = logDetails.map(obj => (
@@ -64,7 +43,6 @@ export default class CdrLogic extends LogicBase {
 
     async filterBy(): Promise<any> {
         const filters = {};
-
         const choice = (await prompter.filterBy()).filter;
 
         for(let element of choice) {

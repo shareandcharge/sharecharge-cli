@@ -1,6 +1,5 @@
 import { injectable } from "inversify";
 import * as inquirer from "inquirer";
-
 const invalidMsg = 'Invalid input';
 
 @injectable()
@@ -9,59 +8,13 @@ export default class Inquirer {
     constructor(){
     }
     
-    public getDriver(){
-        const questions = [{
-            name: 'driver',
-            type: 'input',
-            message: 'Enter the address of the driver',
-            validate: (val) => {
-                if (val.length){
-                    return true;
-                } else {
-                    return invalidMsg;
-                }
-            }
-        }];
-        return inquirer.prompt(questions);
-    }
+    //
 
-    public getAmount(message: string) {
+    public getAnswer(message: string) {
         const questions = [{
-            name: 'amount',
+            name: 'answer',
             type: 'input',
             message,
-            validate: (val) => {
-                if (val.length){
-                    return true;
-                } else {
-                    return invalidMsg;
-                }
-            }
-        }];
-        return inquirer.prompt(questions);
-    }
-
-    public getName(){
-        const questions = [{
-            name: 'name',
-            type: 'input',
-            message: 'Enter the name of your token (e.g. My MSP Token)',
-            validate: (val) => {
-                if (val.length){
-                    return true;
-                } else {
-                    return invalidMsg;
-                }
-            }
-        }];
-        return inquirer.prompt(questions);
-    }
-
-    public getSymbol(){
-        const questions = [{
-            name: 'symbol',
-            type: 'input',
-            message: 'Enter a symbol for your token (e.g. MSP)',
             validate: (val) => {
                 if (val.length){
                     return true;
