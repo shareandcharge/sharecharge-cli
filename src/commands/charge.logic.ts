@@ -1,14 +1,8 @@
 import LogicBase from "../logicBase";
 import chalk from "chalk";
 import Inquirer from "../services/inquirer";
+import { Tariffs } from "@motionwerk/sharecharge-common";
 const prompter = new Inquirer();
-
-enum Tariffs {
-    'kwh',
-    'flat',
-    'parking',
-    'time'
-}
 
 export default class ChargeLogic extends LogicBase {
 

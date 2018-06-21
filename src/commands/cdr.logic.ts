@@ -1,4 +1,4 @@
-import { log } from 'util';
+import { Tariffs } from "@motionwerk/sharecharge-common";
 import LogicBase from '../logicBase';
 import { ToolKit } from '@motionwerk/sharecharge-lib';
 import Inquirer from "../services/inquirer";
@@ -50,7 +50,7 @@ export default class CdrLogic extends LogicBase {
                 start: new Date(obj.returnValues.startTime * 1000).toUTCString(),
                 end: new Date(obj.returnValues.endTime * 1000).toUTCString(),
                 finalPrice: obj.returnValues.finalPrice,
-                tariffId: obj.returnValues.tariffId,
+                tariff: Tariffs[obj.returnValues.tariffId],
                 chargedUnits: obj.returnValues.finalTariffValue,
                 controller: obj.returnValues.controller,
                 tokenAddress: obj.returnValues.tokenAddress,
