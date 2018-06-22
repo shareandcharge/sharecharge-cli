@@ -121,11 +121,12 @@ export default class Inquirer {
         return inquirer.prompt(questions);
     }
 
-    public getEvseId() {
+    public getEvseId(choices: any[]) {
         const questions = [{
             name: 'evseId',
-            type: 'input',
+            type: 'checkbox',
             message: 'Enter an EVSE ID',
+            choices,
             validate: (val) => {
                 if (val.length){
                     return true;
@@ -173,15 +174,10 @@ export default class Inquirer {
     public getTariffType() {
         const questions = [{
             name: 'type',
-            type: 'input',
-            message: 'Enter tariff type (options: kwh, time, flat)',
-            validate: (val) => {
-                if (['kwh', 'time', 'flat'].includes(val)) {
-                    return true;
-                } else {
-                    return invalidMsg;
-                }
-            }
+            type: 'checkbox',
+            message: 'Enter tariff type',
+            choices: ['kwh', 'time', 'flat'],
+            validate: (val) => val.length ? true : invalidMsg
         }];
         return inquirer.prompt(questions);
     }

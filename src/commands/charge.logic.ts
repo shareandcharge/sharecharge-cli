@@ -10,14 +10,15 @@ export default class ChargeLogic extends LogicBase {
         
         const token =  this.core.sc.token.address;
         const scId = (await prompter.getScId()).scId
-        const evseId = (await prompter.getEvseId()).evseId;
-        const tariffType: string = (await prompter.getTariffType()).type;
+        const evseIds = await this.core.sc.store.getEvseIds(scId);
+        const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
+        const tariffType: string = (await prompter.getTariffType()).type[0];
         const tariffId = Tariffs[tariffType];
         const tariffValue = tariffId !== 1 ? (await prompter.getTariffValue(tariffId)).value : 0;
         const amount = (await prompter.getAmount('Enter estimated charging cost in tokens')).amount;
 
         try {
-            await this.core.sc.charging.useWallet(this.core.wallet).requestStart(scId, evseId, tariffId, tariffValue, token, amount);
+            await this.core.sc.charging.useWallet(this.core.wallet).requestStart(scId, evseId,   tariffId, tariffValue, token, amount);
             console.log("Successfully requested remote start on ", chalk.green(evseId));
         } catch (err) {
             console.log(chalk.red(err.message));
@@ -27,7 +28,8 @@ export default class ChargeLogic extends LogicBase {
     public confirmStart = async () => {
 
         const scId = (await prompter.getScId()).scId
-        const evseId = (await prompter.getEvseId()).evseId;
+        const evseIds = await this.core.sc.store.getEvseIds(scId);
+        const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
         const sessionId = '0x01';
 
         try {
@@ -40,10 +42,12 @@ export default class ChargeLogic extends LogicBase {
 
     public requestStop = async () => {
 
-        const scId = (await prompter.getScId()).scId
-        const evseId = (await prompter.getEvseId()).evseId;
+        const scId = (await prompter.getScId()).scId;
+        const evseIds = await this.core.sc.store.getEvseIds(scId);
+        const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
 
         try {
+            console.log('charging at', evseId);
             await this.core.sc.charging.useWallet(this.core.wallet).requestStop(scId, evseId);
             console.log("Succesfully requested remote stop on ", chalk.green(evseId));
         } catch (err) {
@@ -54,7 +58,8 @@ export default class ChargeLogic extends LogicBase {
     public confirmStop = async () => {
 
         const scId = (await prompter.getScId()).scId
-        const evseId = (await prompter.getEvseId()).evseId;
+        const evseIds = await this.core.sc.store.getEvseIds(scId);
+        const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
 
         try {
             await this.core.sc.charging.useWallet(this.core.wallet).confirmStop(scId, evseId);
@@ -67,7 +72,8 @@ export default class ChargeLogic extends LogicBase {
     public getSession = async () => {
 
         const scId = (await prompter.getScId()).scId
-        const evseId = (await prompter.getEvseId()).evseId;
+        const evseIds = await this.core.sc.store.getEvseIds(scId);
+        const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
 
         try {
             const session = await this.core.sc.charging.getSession(scId, evseId);
@@ -79,7 +85,8 @@ export default class ChargeLogic extends LogicBase {
 
     public reset = async () => {
         const scId = (await prompter.getScId()).scId
-        const evseId = (await prompter.getEvseId()).evseId;
+        const evseIds = await this.core.sc.store.getEvseIds(scId);
+        const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
 
         try {
             await this.core.sc.charging.useWallet(this.core.wallet).reset(scId,evseId);
@@ -92,7 +99,8 @@ export default class ChargeLogic extends LogicBase {
     public chargeDetailRecord = async () => {
 
         const scId = (await prompter.getScId()).scId
-        const evseId = (await prompter.getEvseId()).evseId;
+        const evseIds = await this.core.sc.store.getEvseIds(scId);
+        const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
         const session = await this.core.sc.charging.getSession(scId, evseId);
         const tariffValue = (await prompter.getTariffValue(session.tariffId)).value;
         const amount = (await prompter.getAmount('Enter final charging cost in tokens')).amount;
