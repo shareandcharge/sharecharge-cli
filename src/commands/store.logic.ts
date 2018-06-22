@@ -132,7 +132,7 @@ export default class StoreLogic extends LogicBase {
 
     public getTariffs = async (argv) => {
         const cpo = argv.cpo || this.core.wallet.keychain[0].address;
-        const result = await this.core.sc.store.getTariffsByCPO(cpo);
+        const result = await this.core.sc.store.getAllTariffsByCPO(cpo);
         console.log(JSON.stringify(result, null, 2));
     };
 
