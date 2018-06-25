@@ -67,16 +67,13 @@ export default class StoreLogic extends LogicBase {
 
         let results: { scId: string }[] = [];
 
-        const evLocations = await this.core.sc.store.getLocationsByCPO(this.core.wallet.keychain[0].address);
+        const ids = await this.core.sc.store.getIdsByCPO(this.core.wallet.coinbase);
+        const idsToRemove = (await prompter.getFromCheckbox('Select locations to remove', ids)).checked;
 
-        for (const evLocation of evLocations) {
+        for (const id of idsToRemove) {
             try {
-                if (evLocation.data) {
-                    // result should contain location id from OCPI structure
-                    const result = await this.core.sc.store.useWallet(this.core.wallet)
-                        .removeLocation(evLocation.scId);
-                    results.push(result);
-                }
+                const result = await this.core.sc.store.useWallet(this.core.wallet).removeLocation(id);
+                results.push(result);
             } catch (err) {
                 console.log(err.message);
             }

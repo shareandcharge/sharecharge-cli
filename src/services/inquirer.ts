@@ -7,8 +7,6 @@ export default class Inquirer {
 
     constructor(){
     }
-    
-    //
 
     public getAnswer(message: string) {
         const questions = [{
@@ -24,6 +22,19 @@ export default class Inquirer {
             }
         }];
         return inquirer.prompt(questions);
+    }
+
+    public getFromCheckbox(message, choices) {
+        const questions = [
+            {
+                name: 'checked',
+                type: 'checkbox',
+                message,
+                choices,
+                validate: (val) => val.length ? true : invalidMsg
+            }
+        ];
+        return inquirer.prompt(questions); 
     }
     
     public getCharging(){

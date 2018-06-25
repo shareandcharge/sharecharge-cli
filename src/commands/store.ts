@@ -30,7 +30,7 @@ export default (yargs) => {
             storeLogic.getLocationIds)
 
         .command("remove-locations",
-            chalk.yellow("Remove all locations (charge point) from the Share&Charge EV Network"),
+            chalk.yellow("Remove locations (charge point) from the Share&Charge EV Network"),
             yargs => {}, 
             storeLogic.removeLocations)
 
