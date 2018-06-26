@@ -1,4 +1,4 @@
-import { Wallet } from "@motionwerk/sharecharge-lib"
+import { Wallet } from "@motionwerk/sharecharge-lib";
 import LogicBase from '../logicBase';
 import chalk from "chalk";
 // import Inquirer from "../services/inquirer";
