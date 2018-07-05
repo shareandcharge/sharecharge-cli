@@ -107,7 +107,6 @@ export default class StoreLogic extends LogicBase {
 
     public addTariffs = async (argv) => {
         try {
-            console.log(this.core.config);
             const result = await this.core.sc.store.useWallet(this.core.wallet)
                 .addTariffs(this.core.tariffs);
             console.log(`Added tariffs data\nipfs: ${result}`);

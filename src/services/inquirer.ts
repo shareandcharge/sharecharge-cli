@@ -107,7 +107,7 @@ export default class Inquirer {
             name: 'filter',
             type: 'checkbox',
             message: 'Filter Charge Detail Records by:',
-            choices:['scId', 'evseId', 'controller', 'tokenAddress', 'start', 'end'],
+            choices:['scId', 'evseId', 'sessionId', 'controller', 'tokenAddress', 'start', 'end'],
             validate: (val) => {
                 if (val.length){
                     return true;

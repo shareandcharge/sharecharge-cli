@@ -1,11 +1,11 @@
 {
   "name": "@motionwerk/sharecharge-cli",
-  "version": "0.4.7",
+  "version": "0.5.0",
   "description": "Command Line Interface for the Share&Charge e-Mobility Network",
   "main": "index.js",
   "scripts": {
-    "install": "npm run build",
-    "build": "tsc && echo '#!/usr/bin/env node'| cat - ./dist/sc.js > ./dist/sc.node.js",
+    "postinstall": "([ -e dist/sc.js ] && chmod +x ./dist/sc.js) || echo 'No tsc output found. Ignoring.'",
+    "start": "./dist/app.js",
     "test": "mocha --exit -r ts-node/register test/**/*.spec.ts"
   },
   "repository": {
@@ -18,17 +18,15 @@
     "url": "https://github.com/motionwerkGmbH/sharecharge-cli/issues"
   },
   "bin": {
-    "scli": "./dist/sc.node.js"
+    "sc-cli": "./dist/sc.js"
   },
   "homepage": "https://github.com/motionwerkGmbH/sharecharge-cli#readme",
   "dependencies": {
-    "@motionwerk/sharecharge-common": "^1.5.3",
-    "@motionwerk/sharecharge-lib": "^0.7.1",
-    "@types/node": "10.1.4",
+    "@motionwerk/sharecharge-common": "^1.13.0",
+    "@motionwerk/sharecharge-lib": "^0.7.5",
     "chalk": "^2.4.1",
     "inquirer": "^6.0.0",
     "inversify": "^4.13.0",
-    "js-yaml": "^3.12.0",
     "reflect-metadata": "^0.1.12",
     "yargs": "^11.0.0"
   },
@@ -36,7 +34,6 @@
     "@types/mocha": "^5.2.2",
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
-    "sinon": "^5.1.1",
     "ts-node": "^6.1.1",
     "typescript": "^2.9.2"
   }

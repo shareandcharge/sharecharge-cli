@@ -26,6 +26,7 @@ export default class CdrLogic extends LogicBase {
             {
                 scId: obj.returnValues.scId,
                 evseId: ToolKit.hexToString(obj.returnValues.evseId),
+                sessionId: obj.returnValues.sessionId,
                 start: new Date(obj.returnValues.startTime * 1000).toUTCString(),
                 end: new Date(obj.returnValues.endTime * 1000).toUTCString(),
                 finalPrice: obj.returnValues.finalPrice,
@@ -44,7 +45,6 @@ export default class CdrLogic extends LogicBase {
     async filterBy(): Promise<any> {
         const filters = {};
         const choice = (await prompter.filterBy()).filter;
-
         for(let element of choice) {
             if (element === 'evseId') {
                 let evse = (await prompter.getInput(element)).filter;
@@ -52,7 +52,10 @@ export default class CdrLogic extends LogicBase {
                 const evsePadded = evseHex.padEnd(66, '0');
                 filters[element] = evsePadded;
             }else {
-                filters[element] = (await prompter.getInput(element)).filter.toLowerCase();
+                const filter = (await prompter.getInput(element)).filter;
+                console.log('filter:', filter);
+                filters[element] = filter;
+                console.log(filters);
             }
         }
 
@@ -61,6 +64,7 @@ export default class CdrLogic extends LogicBase {
             {
                 scId: obj.returnValues.scId,
                 evseId: ToolKit.hexToString(obj.returnValues.evseId),
+                sessionId: obj.returnValues.sessionId,
                 start: new Date(obj.returnValues.startTime * 1000).toUTCString(),
                 end: new Date(obj.returnValues.endTime * 1000).toUTCString(),
                 finalPrice: obj.returnValues.finalPrice,

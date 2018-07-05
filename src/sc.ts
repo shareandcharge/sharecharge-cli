@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import * as yargs from "yargs";
 import chargeHandler from "./commands/charge";
 import tokenHandler from "./commands/token";
