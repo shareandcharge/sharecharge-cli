@@ -12,14 +12,45 @@ export default class ChargeLogic extends LogicBase {
         const scId = (await prompter.getScId()).scId
         const evseIds = await this.core.sc.store.getEvseIds(scId);
         const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
+        const tariff = await this.core.sc.store.getTariffByEvse(scId, evseId);
         const tariffType: string = (await prompter.getTariffType()).type[0];
         const tariffId = Tariffs[tariffType];
-        const tariffValue = tariffId !== 1 ? (await prompter.getTariffValue(tariffId)).value : 0;
-        const amount = (await prompter.getAnswer('Enter estimated charging cost in tokens')).answer;
+        let tariffValue;
+        let price;
+
+        switch (tariffId) {
+            case Tariffs.kwh:
+                // convert input kilowatthours to watthours
+                tariffValue = (await prompter.getTariffValue(tariffId)).value * 1000;
+                // convert priceperkwh to priceperwh
+                price = Math.round((tariff.energyRates[0].priceComponents.price * 100 / 1000) * tariffValue);
+                break;
+            case Tariffs.time:
+                // convert input minutes to seconds
+                tariffValue = (await prompter.getTariffValue(tariffId)).value * 60;
+                // priceperhour to priceperseconds
+                price = Math.round(((tariff.timeRates[0].priceComponents.price * 100) / 60 / 60) * tariffValue);
+                break;
+            case Tariffs.flat:
+                tariffValue = 0;
+                price = tariff.flatRates[0].priceComponents.price * 100;
+                break;
+            default:
+                console.log('Tariff not found');
+                return;
+        }
+
+        console.log('Your balance:   ', await this.core.sc.token.getBalance(this.core.wallet.coinbase), 'tokens');
+        console.log('Estimated price:', price, 'tokens');
+
+        const confirmed = (await prompter.getConfirmation('Agree to the estimated price?')).confirmed;
+        if (!confirmed) {
+            return;
+        }
 
         try {
-            await this.core.sc.charging.useWallet(this.core.wallet).requestStart(scId, evseId,   tariffId, tariffValue, token, amount);
-            console.log("Successfully requested remote start on ", chalk.green(evseId));
+            await this.core.sc.charging.useWallet(this.core.wallet).requestStart(scId, evseId, tariffId, tariffValue, token, price);
+            console.log("Successfully requested remote start on", chalk.green(evseId));
         } catch (err) {
             console.log(err.message);
         }
@@ -34,7 +65,7 @@ export default class ChargeLogic extends LogicBase {
 
         try {
             await this.core.sc.charging.useWallet(this.core.wallet).confirmStart(scId, evseId, sessionId);
-            console.log("Successfully confirmed remote session start on ", chalk.green(evseId));
+            console.log("Successfully confirmed remote session start on", chalk.green(evseId));
         } catch (err) {
             console.log(err.message);
         }
@@ -47,9 +78,8 @@ export default class ChargeLogic extends LogicBase {
         const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
 
         try {
-            console.log('charging at', evseId);
             await this.core.sc.charging.useWallet(this.core.wallet).requestStop(scId, evseId);
-            console.log("Succesfully requested remote stop on ", chalk.green(evseId));
+            console.log("Succesfully requested remote stop on", chalk.green(evseId));
         } catch (err) {
             console.log(err.message);
         }
@@ -90,7 +120,7 @@ export default class ChargeLogic extends LogicBase {
 
         try {
             await this.core.sc.charging.useWallet(this.core.wallet).reset(scId,evseId);
-            console.log("Successfully reset session on scId: " , scId, " evseId: ", evseId);
+            console.log("Successfully reset session on scId:" , scId, "evseId:", evseId);
         } catch (err) {
             console.log(err.message);
         }

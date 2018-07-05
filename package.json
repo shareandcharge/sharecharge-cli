@@ -1,11 +1,11 @@
 {
   "name": "@motionwerk/sharecharge-cli",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Command Line Interface for the Share&Charge e-Mobility Network",
   "main": "index.js",
   "scripts": {
     "postinstall": "([ -e dist/sc.js ] && chmod +x ./dist/sc.js) || echo 'No tsc output found. Ignoring.'",
-    "start": "./dist/app.js",
+    "start": "./dist/sc.js",
     "test": "echo 'no tests!'",
     "test_": "mocha --exit -r ts-node/register test/**/*.spec.ts"
   },

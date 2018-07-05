@@ -24,6 +24,15 @@ export default class Inquirer {
         return inquirer.prompt(questions);
     }
 
+    public getConfirmation(message: string) {
+        const questions = [{
+            name: 'confirmed',
+            type: 'confirm',
+            message
+        }];
+        return inquirer.prompt(questions);
+    }
+
     public getFromCheckbox(message, choices) {
         const questions = [
             {
