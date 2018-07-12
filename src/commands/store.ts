@@ -5,8 +5,9 @@ import chalk from "chalk";
 const storeLogic = new StoreLogic();
 
 export default (yargs) => {
-    yargs
-        .usage("Usage: sc store <command> [options]")
+    
+    return yargs
+        .usage("Usage: store <command> [options]")
         .demandCommand(1)
 
         .command("add-locations",

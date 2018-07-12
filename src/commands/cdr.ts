@@ -6,8 +6,8 @@ const cdrLogic = new CdrLogic();
 
 export default (yargs) => {
 
-    yargs
-        .usage("Usage: sc cdr <command> [options]")
+    return yargs
+        .usage("Usage: cdr <command> [options]")
         .demandCommand(1)
 
         .command("info",

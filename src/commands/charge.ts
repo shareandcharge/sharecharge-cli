@@ -7,8 +7,8 @@ const chargeLogic = new ChargeLogic();
 
 export default (yargs) => {
 
-    yargs
-        .usage("Usage: sc charging <command> [options]")
+    return yargs
+        .usage("Usage: charging <command> [options]")
         .demandCommand(1)
 
         .command("request-start",
@@ -36,10 +36,6 @@ export default (yargs) => {
             yargs => {}, 
             chargeLogic.getSession)
 
-        .command("reset",
-            chalk.yellow("Resets a charging session"),
-            yargs => {}, 
-            chargeLogic.reset)
 
         .command("cdr",
             chalk.yellow("Issue a Charge Detail Record following the end of a session"),

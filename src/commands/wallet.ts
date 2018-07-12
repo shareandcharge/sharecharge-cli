@@ -5,8 +5,9 @@ import WalletLogic from "./wallet.logic";
 const walletLogic = new WalletLogic();
 
 export default (yargs) => {
-    yargs
-        .usage("Usage: sc wallet <command> [options]")
+    
+    return yargs
+        .usage("Usage: wallet <command> [options]")
         .demandCommand(1)
 
         .command("create",

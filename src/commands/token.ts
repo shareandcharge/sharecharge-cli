@@ -5,8 +5,9 @@ import chalk from "chalk";
 const tokenLogic = new TokenLogic();
 
 export default (yargs) => {
-    yargs
-        .usage("Usage: sc token <command> [options]")
+    
+    return yargs
+        .usage("Usage: token <command> [options]")
         .demandCommand(1)
 
         .command("deploy",

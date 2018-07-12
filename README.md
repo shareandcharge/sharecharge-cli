@@ -12,34 +12,14 @@ The S&C CLI is available as an NPM package:
 npm install -g @motionwerk/sharecharge-cli
 ```
 
-Run:
+Run and show possible commands:
 
 ```
-scli
+sc-cli
 ```
 
 Each command has a help flag for further information, for example:
 
 ```
-scli token --help
-```
-
----
-
-## Documentation
-
-```
-Usage: sc <command> [options]
-
-Commands:
-  scli cdr       Access and filter Charge Detail Records
-  scli charging  Control EV charging sessions
-  scli store     Add and query data stored on the Share & Charge EV Network
-  scli token     Deploy and manage a Mobility Service Provider token
-  scli wallet    Create and manage a Share & Charge wallet
-
-Options:
-  --json         generate json output
-  -v, --version  Show version number                                   [boolean]
-  -h, --help     Show help                                             [boolean]
+sc-cli token --help
 ```
