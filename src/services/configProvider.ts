@@ -27,6 +27,10 @@ export default class ConfigProvider implements IConfig {
         this.config = ConfigProvider.load(getConfigDir() + "config.json");
     }
 
+    get(): IConfig {
+        return this.config;
+    }
+
     get locationsPath() {
         return this.config.locationsPath;
     }
