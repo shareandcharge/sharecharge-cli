@@ -5,7 +5,6 @@ import { getConfigDir, IConfig, prepareConfigLocation } from "@motionwerk/sharec
 
 prepareConfigLocation(path.join(__dirname, "/../../config-templates/"), [
     "locations.json",
-    "locations-bs.json",
     "tariffs.json"
 ]);
 
