@@ -112,7 +112,8 @@ workflows:
   version: 2
   build_test:
     jobs:
-      - build
+      - build:
+          context: npm-access
       - test:
           requires:
             - build
@@ -120,6 +121,7 @@ workflows:
           requires:
             - build
       - deploy:
+          context: npm-access
           requires:
             - test
             - transpile
