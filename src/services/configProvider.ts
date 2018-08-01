@@ -106,15 +106,6 @@ export default class ConfigProvider implements IConfig {
         ConfigProvider.save(this.config);
     }
 
-    get jwtPrivateKey() {
-        return this.config.jwtPrivateKey;
-    }
-
-    set jwtPrivateKey(value: string | undefined) {
-        this.config.jwtPrivateKey = value;
-        ConfigProvider.save(this.config);
-    }
-
     getNestedKey(keys: string[]): any {
         return this.config[keys[0]][keys[1]]
     }
