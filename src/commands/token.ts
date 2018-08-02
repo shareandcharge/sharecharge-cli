@@ -15,12 +15,7 @@ export default (yargs) => {
             yargs => {},
             tokenLogic.deploy)
 
-        .command("mint",
-            chalk.yellow("Mint tokens for an EV driver"),
-            yargs => {}, 
-            tokenLogic.mint)
-
-        .command("balance",
+            .command("balance",
             chalk.yellow("Check balance of EV driver"),
             yargs => {}, 
             tokenLogic.balance)
@@ -29,4 +24,19 @@ export default (yargs) => {
             chalk.yellow("Check MSP Token information"),
             {},
             tokenLogic.info)
+
+        .command("mint",
+            chalk.yellow("Mint tokens for an EV driver"),
+            yargs => {}, 
+            tokenLogic.mint)
+
+        .command("burn",
+            chalk.yellow("Burn tokens from your wallet"),
+            yargs => {},
+            tokenLogic.burn)
+
+        .command('transfer',
+            chalk.yellow('Transfer tokens to another wallet address'),
+            yargs => {},
+            tokenLogic.transfer)
 }

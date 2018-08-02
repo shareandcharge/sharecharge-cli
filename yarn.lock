@@ -19,8 +19,8 @@
     mkdirp "^0.5.1"
 
 "@motionwerk/sharecharge-lib@^0.8.0":
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/@motionwerk/sharecharge-lib/-/sharecharge-lib-0.8.5.tgz#775f46a19f8d9539d4f4d9bbcca3ba1f4e3225f5"
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/@motionwerk/sharecharge-lib/-/sharecharge-lib-0.8.6.tgz#55954daba4a30e6e7440eb3681b388b57c3e3efa"
   dependencies:
     "@motionwerk/sharecharge-common" "^1.15.0"
     "@motionwerk/sharecharge-contracts" "^0.5.0"
