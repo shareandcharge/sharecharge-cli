@@ -10,7 +10,7 @@ export default (yargs) => {
         .usage("Usage: wallet <command> [options]")
         .demandCommand(1)
 
-        .command("create",
+        .command(["create", "generate"],
             chalk.yellow("Create a new Share & Charge e-Mobility wallet"),
             {},
             walletLogic.create)

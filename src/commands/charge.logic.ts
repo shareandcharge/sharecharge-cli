@@ -33,7 +33,7 @@ export default class ChargeLogic extends LogicBase {
                 break;
             case Tariffs.flat:
                 tariffValue = 0;
-                price = tariff.flatRates[0].priceComponents.price * 100;
+                price = Math.round(tariff.flatRates[0].priceComponents.price * 100);
                 break;
             default:
                 console.log('Tariff not found');
@@ -131,8 +131,7 @@ export default class ChargeLogic extends LogicBase {
         const scId = (await prompter.getScId()).scId
         const evseIds = await this.core.sc.store.getEvseIds(scId);
         const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
-        const session = await this.core.sc.charging.getSession(scId, evseId);
-        const tariffValue = (await prompter.getTariffValue(session.tariffId)).value;
+        const tariffValue = (await prompter.getTariffValue('0')).value;
         const amount = (await prompter.getAnswer('Enter final charging cost in tokens')).answer;
 
         try {
