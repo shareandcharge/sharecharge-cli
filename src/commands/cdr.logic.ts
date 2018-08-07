@@ -24,7 +24,7 @@ export default class CdrLogic extends LogicBase {
         const logDetails = await this.core.sc.charging.contract.getLogs('ChargeDetailRecord', filters);
         let allLogs: any = logDetails.map(obj => (
             {
-                scId: obj.returnValues.scId,
+                scId: ToolKit.hexToScId(obj.returnValues.scId),
                 evseId: ToolKit.hexToString(obj.returnValues.evseId),
                 sessionId: obj.returnValues.sessionId,
                 start: new Date(obj.returnValues.startTime * 1000).toUTCString(),
