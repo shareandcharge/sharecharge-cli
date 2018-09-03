@@ -131,7 +131,7 @@ export default class ChargeLogic extends LogicBase {
         const scId = (await prompter.getScId()).scId
         const evseIds = await this.core.sc.store.getEvseIds(scId);
         const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
-        const tariffValue = (await prompter.getTariffValue('0')).value;
+        const tariffValue = (await prompter.getTariffValue('0')).value * 1000;
         const amount = (await prompter.getAnswer('Enter final charging cost in tokens')).answer;
 
         try {

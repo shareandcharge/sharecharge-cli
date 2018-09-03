@@ -156,11 +156,10 @@ export default class Inquirer {
     }
 
     public getTariffValue(tariffId) {
-        const tariffs = ['energy in kWh',,,'length in minutes']
         const questions = [{
             name: 'value',
             type: 'input',
-            message: `Enter charging session ${tariffs[tariffId]}`,
+            message: `Enter charging session consumption (kWh)`,
             validate: (val) => val.length ? true : invalidMsg
         }];
         return inquirer.prompt(questions);
