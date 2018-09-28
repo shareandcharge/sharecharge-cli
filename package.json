@@ -1,6 +1,6 @@
 {
   "name": "@motionwerk/sharecharge-cli",
-  "version": "0.6.9",
+  "version": "0.7.0",
   "description": "Command Line Interface for the Share&Charge e-Mobility Network",
   "scripts": {
     "postinstall": "([ -e dist/sc.js ] && chmod +x ./dist/sc.js) || echo 'No tsc output found. Ignoring.'",
@@ -22,18 +22,18 @@
   },
   "homepage": "https://github.com/motionwerkGmbH/sharecharge-cli#readme",
   "dependencies": {
-    "@motionwerk/sharecharge-common": "^1.15.0",
-    "@motionwerk/sharecharge-lib": "^0.8.0",
+    "@motionwerk/sharecharge-common": "^1.16.0",
+    "@motionwerk/sharecharge-lib": "^0.9.0",
     "@types/yargs": "^11.1.0",
     "chalk": "^2.4.1",
-    "inquirer": "^6.0.0",
+    "inquirer": "^6.2.0",
     "inversify": "^4.13.0",
     "reflect-metadata": "^0.1.12",
     "yargs": "^11.0.0"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.2",
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "mocha": "^5.2.0",
     "ts-node": "^6.1.1",
     "typescript": "^2.9.2"
