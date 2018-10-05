@@ -1,8 +1,14 @@
-import { Tariffs } from "@motionwerk/sharecharge-common";
 import LogicBase from '../logicBase';
 import { ToolKit } from '@motionwerk/sharecharge-lib';
 import Inquirer from "../services/inquirer";
 const prompter = new Inquirer();
+
+enum Tariffs {
+    'energy' = 0,
+    'flat' = 1,
+    'time' = 3
+}
+
 export default class CdrLogic extends LogicBase {
 
     public getInfo = async (argv) => {

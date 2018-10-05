@@ -1,6 +1,7 @@
 import LogicBase from "../logicBase"
 import chalk from "chalk";
 import Inquirer from "../services/inquirer";
+import { Location } from "@motionwerk/sharecharge-common";
 const prompter = new Inquirer();
 export default class StoreLogic extends LogicBase {
 
@@ -37,17 +38,22 @@ export default class StoreLogic extends LogicBase {
 
         const evLocations = await this.core.sc.store.getLocationsByCPO(this.core.wallet.keychain[0].address);
 
+        console.log('locations:', locations);
+        console.log('evl:', evLocations);
+
         for (const location of locations) {
             try {
 
-                const evLocation = evLocations.find(loc => {
-                    return loc.data ? loc.data.id === location.id : false;
-                });
+                const evLocation = Object.entries(evLocations).filter((loc) => {
+                    console.log('loc:', loc);
+                    return loc[1].id ? loc[1].id === location.id : false;
+                })[0];
+
+                console.log('evLocation:', evLocation);
 
                 if (evLocation) {
-                    // result should contain location id from OCPI structure
                     const result = await this.core.sc.store.useWallet(this.core.wallet)
-                        .updateLocation(evLocation.scId, location);
+                        .updateLocation(evLocation[0], location);
                     results.push(Object.assign({locId: location.id}, result));
                 }
             } catch (err) {

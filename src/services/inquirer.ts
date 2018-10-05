@@ -1,5 +1,7 @@
 import { injectable } from "inversify";
 import * as inquirer from "inquirer";
+import Connector from "@motionwerk/sharecharge-common/dist/models/ocpi/models/connector";
+import { Tariff } from "@motionwerk/sharecharge-common";
 const invalidMsg = 'Invalid input';
 
 @injectable()
@@ -82,7 +84,7 @@ export default class Inquirer {
         const questions = [{
             name: 'scId',
             type: 'input',
-            message: 'Enter a Share & Charge Location ID',
+            message: 'Select a Share & Charge Location ID',
             validate: (val) => {
                 if (val.length){
                     return true;
@@ -98,7 +100,7 @@ export default class Inquirer {
         const questions = [{
             name: 'evseId',
             type: 'checkbox',
-            message: 'Enter an EVSE ID',
+            message: 'Select an EVSE ID',
             choices,
             validate: (val) => {
                 if (val.length){
@@ -108,6 +110,31 @@ export default class Inquirer {
                 }
             }
         }];
+        return inquirer.prompt(questions);
+    }
+
+    public getConnector(connectors: Connector[]) {
+        const questions = [
+            {
+                name: 'connector',
+                type: 'checkbox',
+                message: 'Select a connector',
+                choices: connectors.map(conn => conn.id),
+                transformer: (val) => {
+                    console.log('val:', val);
+                    const standard = connectors.filter(c => c.id === val)[0].standard;
+                    val += ': ' + standard;
+                    return val;
+                },
+                validate: (val) => {
+                    if (val.length) {
+                        return true;
+                    } else {
+                        return invalidMsg;
+                    }
+                }
+            }
+        ];
         return inquirer.prompt(questions);
     }
 
@@ -144,12 +171,12 @@ export default class Inquirer {
         return inquirer.prompt(questions);
     }
 
-    public getTariffType() {
+    public getTariffType(tariff: Tariff) {
         const questions = [{
             name: 'type',
             type: 'checkbox',
             message: 'Enter tariff type',
-            choices: ['kwh', 'time', 'flat'],
+            choices: tariff.elements.map(el => el.price_components[0].type.toLowerCase()),
             validate: (val) => val.length ? true : invalidMsg
         }];
         return inquirer.prompt(questions);
@@ -159,7 +186,7 @@ export default class Inquirer {
         const questions = [{
             name: 'value',
             type: 'input',
-            message: `Enter charging session ${tariffId === 0 ? 'consumption (kWh)' : 'duration (minutes)'}`,
+            message: `Enter charging session ${tariffId === 'energy' ? 'consumption (kWh)' : 'duration (minutes)'}`,
             validate: (val) => val.length ? true : invalidMsg
         }];
         return inquirer.prompt(questions);
