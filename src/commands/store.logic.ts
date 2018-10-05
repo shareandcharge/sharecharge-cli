@@ -21,7 +21,7 @@ export default class StoreLogic extends LogicBase {
             }
         }
 
-        console.log(`Added ${results.length} locations to network\n`);
+        console.log(`Added ${results.length} locations to network`);
         for (const res of results) {
             console.log(`${res.locId}\nscId: ${res.scId}\nipfs: ${res.ipfs}\n`);
         }

@@ -159,7 +159,7 @@ export default class Inquirer {
         const questions = [{
             name: 'value',
             type: 'input',
-            message: `Enter charging session consumption (kWh)`,
+            message: `Enter charging session ${tariffId === 0 ? 'consumption (kWh)' : 'duration (minutes)'}`,
             validate: (val) => val.length ? true : invalidMsg
         }];
         return inquirer.prompt(questions);
