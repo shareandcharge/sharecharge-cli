@@ -171,12 +171,12 @@ export default class Inquirer {
         return inquirer.prompt(questions);
     }
 
-    public getTariffType(tariff: Tariff) {
+    public getTariffType(choices: string[]) {
         const questions = [{
             name: 'type',
             type: 'checkbox',
             message: 'Enter tariff type',
-            choices: tariff.elements.map(el => el.price_components[0].type.toLowerCase()),
+            choices,
             validate: (val) => val.length ? true : invalidMsg
         }];
         return inquirer.prompt(questions);
@@ -186,7 +186,7 @@ export default class Inquirer {
         const questions = [{
             name: 'value',
             type: 'input',
-            message: `Enter charging session ${tariffId === 'energy' ? 'consumption (kWh)' : 'duration (minutes)'}`,
+            message: `Enter charging session ${tariffId === 'ENERGY' ? 'consumption (kWh)' : 'duration (minutes)'}`,
             validate: (val) => val.length ? true : invalidMsg
         }];
         return inquirer.prompt(questions);

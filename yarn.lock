@@ -3,29 +3,29 @@
 
 
 "@motionwerk/sharecharge-common@^1.16.0":
-  version "1.16.6"
-  resolved "https://registry.yarnpkg.com/@motionwerk/sharecharge-common/-/sharecharge-common-1.16.6.tgz#30fcd1089b4def24f6851d87100c55882b65a544"
-  integrity sha512-mtLk4Ug+873GJaPEZdztEhgn3rlehodjE3Yxa8pMQ+3sVxQoXFowwytPj/WY/4mS/HM/lTrv2wBqjM9mWABd3A==
+  version "1.16.7"
+  resolved "https://registry.yarnpkg.com/@motionwerk/sharecharge-common/-/sharecharge-common-1.16.7.tgz#3f73d123158b3e56de346119858758dcaacd8ece"
+  integrity sha512-mmRAHb12TSSdBIaIhHmVaUrrvvtbksakYBAnn4xMWBRtKCDBGL1PxlHTeanfhajN1QVzFWdyKa1VXbiTWBoqwg==
   dependencies:
     ganache-cli "^6.0.3"
     rxjs "^6.2.0"
     uuid "^3.3.2"
 
-"@motionwerk/sharecharge-contracts@^0.5.0":
-  version "0.5.11"
-  resolved "https://registry.yarnpkg.com/@motionwerk/sharecharge-contracts/-/sharecharge-contracts-0.5.11.tgz#ead3271a3f08f3695d11ef1391ad8bc08d2dcb74"
-  integrity sha512-1v0McHdc5nixnVb3cmtuTKjldIvZ9FahHE6QZnwTBPxp4WNFLWzj53FewIClQ5fwwNTAKr0HvnkW3YKDn8o1Ug==
+"@motionwerk/sharecharge-contracts@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@motionwerk/sharecharge-contracts/-/sharecharge-contracts-0.7.0.tgz#41cf4797bb09eb3914ee9a8b3d4f71ea47eb8314"
+  integrity sha512-NlQh65D10Ujx34NjgXLmZJX/d6NGNhZ4gzKSM+w/IRDtg6ISAdjL3uuBBcyFiA2s1TfIrz/1ygHY597ocz/GwA==
   dependencies:
     ganache-cli "^6.1.0"
     mkdirp "^0.5.1"
 
-"@motionwerk/sharecharge-lib@^0.10.0":
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/@motionwerk/sharecharge-lib/-/sharecharge-lib-0.10.2.tgz#c6c68ee5d3f1c29e11ebd3b9fbc1cc4cae043af1"
-  integrity sha512-R8dDuF4UIXVIq3rVfJsHpxwzTlnRxehbmzcyqmz+E4CrmHYsMjR0kAomaYUVhUs7qZYU2lTwr7SJSsnMHE6l+w==
+"@motionwerk/sharecharge-lib@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@motionwerk/sharecharge-lib/-/sharecharge-lib-0.12.0.tgz#d8d291f94655291fddd24a051e524e2e5f424315"
+  integrity sha512-Uy2I/OLIHDWzsVKOzNmskKoxlaga9nFyASB7ORgABNQtKerAnfO80QRKm3ePscI+PR3cUNfHwlTnHHyMoceCBw==
   dependencies:
     "@motionwerk/sharecharge-common" "^1.16.0"
-    "@motionwerk/sharecharge-contracts" "^0.5.0"
+    "@motionwerk/sharecharge-contracts" "^0.7.0"
     bip39 "^2.5.0"
     bs58 "^4.0.1"
     ethereumjs-tx "^1.3.4"
