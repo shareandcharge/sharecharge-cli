@@ -26,7 +26,7 @@ export default class ChargeLogic extends LogicBase {
 
         const tariffId = location.getTariffId(evseId, connectorId);
 
-        const tariffs = await this.core.sc.store.getAllTariffsByCPO(this.core.wallet.coinbase);
+        const tariffs = await this.core.sc.store.getAllTariffsByCPO(owner);
         
         if (tariffId) {
             
