@@ -101,6 +101,7 @@ export default class StoreLogic extends LogicBase {
         for (const id of ids) {
             console.log(id);
         }
+        this.close();
     };
 
     public getLocations = async (argv) => {
