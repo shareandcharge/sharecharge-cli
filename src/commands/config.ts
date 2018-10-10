@@ -35,4 +35,5 @@ export default (yargs: Argv) => {
                 });
             }, 
             configLogic.set)
+        .command("edit", "Open the Share & Charge configuration in your editor", {}, configLogic.edit)
 }

@@ -60,7 +60,7 @@ export default class ChargeLogic extends LogicBase {
         
                 const confirmed = (await prompter.getConfirmation('Agree to the estimated price?')).confirmed;
                 if (!confirmed) {
-                    return;
+                    this.close();
                 }
         
                 try {
@@ -77,14 +77,16 @@ export default class ChargeLogic extends LogicBase {
                 } catch (err) {
                     console.log(err.message);
                 }
+                this.close();
             
             } else {
                 console.log('Tariff Id', tariffId, 'does not exist');
+                this.close();
             }
         
         } else {
             console.log('No tariffs found for connector');
-            return;
+            this.close();
         }
 
     };
@@ -108,6 +110,7 @@ export default class ChargeLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
+        this.close();
     };
 
     public requestStop = async () => {
@@ -127,6 +130,7 @@ export default class ChargeLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
+        this.close();
     };
 
     public confirmStop = async () => {
@@ -146,6 +150,7 @@ export default class ChargeLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
+        this.close();
     };
 
     public getSession = async () => {
@@ -162,6 +167,7 @@ export default class ChargeLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
+        this.close();
     }
 
     public chargeDetailRecord = async () => {
@@ -185,6 +191,7 @@ export default class ChargeLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
+        this.close();
     }
 
 }

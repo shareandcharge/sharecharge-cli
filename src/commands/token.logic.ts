@@ -18,6 +18,7 @@ export default class TokenLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
+        this.close();
 
     };
 
@@ -38,6 +39,7 @@ export default class TokenLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
+        this.close();
     };
 
     public burn = async () => {
@@ -51,6 +53,7 @@ export default class TokenLogic extends LogicBase {
         await this.core.sc.token.useWallet(this.core.wallet).burn(value);
         const newBalance = await this.core.sc.token.getBalance(this.core.wallet.coinbase);
         console.log('New balance:', newBalance);
+        this.close();
     }
 
     public transfer = async () => {
@@ -64,12 +67,14 @@ export default class TokenLogic extends LogicBase {
         }
         await this.core.sc.token.useWallet(this.core.wallet).transfer(recipient, value);
         console.log('New balance:', await this.core.sc.token.getBalance(this.core.wallet.coinbase));
+        this.close();
     }
 
     public balance = async () => {
         const driver = (await prompter.getAnswer('Enter the address of the driver')).answer || this.core.wallet.keychain[0].address;
         const balance = await this.core.sc.token.getBalance(driver);
         console.log(chalk.green(`Balance: ${balance}`));
+        this.close();
     };
 
     public info = async () => {
@@ -80,6 +85,7 @@ export default class TokenLogic extends LogicBase {
         console.log(`Address: ${chalk.green(this.core.sc.token.address)}`);
         const owner = await this.core.sc.token.getOwner();
         console.log(`Owner:   ${chalk.green(owner)}`);
+        this.close();
     };
 
     private isOwner = async () => {

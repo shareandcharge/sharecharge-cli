@@ -15,12 +15,14 @@ export default class CdrLogic extends LogicBase {
         if (!argv.json) {
             const cdrInfo = await this.getCDRInfo(argv);
             console.log(JSON.stringify(cdrInfo, null, 2));
+            this.close();
         }
     };
 
     public getFilter = async (argv) => {
         const cdrInfo = await this.filterBy();
         console.log(JSON.stringify(cdrInfo, null, 2));
+        this.close();
     }
 
     async getCDRInfo(argv): Promise<any> {

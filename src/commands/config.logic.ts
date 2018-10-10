@@ -1,5 +1,8 @@
 import LogicBase from "../logicBase";
 import { Arguments } from "yargs";
+import { spawn } from 'child_process';
+import { getConfigDir } from '@motionwerk/sharecharge-common';
+import { join as joinPath } from 'path';
 
 export default class ConfigLogic extends LogicBase {
 
@@ -15,18 +18,37 @@ export default class ConfigLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
+        this.close();
     }
 
     public set = (args: Arguments): void => {
         try {
+            const configPath = joinPath(getConfigDir(), 'config.json');
             const keys = args.key.split('.')
             if (keys.length === 2) {
                 this.core.config.setNestedKey(keys, args.value);
             } else {
                 this.core.config[args.key] = args.value;
             }
+            console.log('Saved changes to', configPath);
         } catch (err) {
             console.log(err.message);
+        }
+        this.close();
+    }
+
+    public edit = () => {
+        const configPath = joinPath(getConfigDir(), 'config.json');
+        if (process.env.EDITOR) {
+            spawn(process.env.EDITOR, [configPath], {
+                stdio: 'inherit',
+                detached: true
+            }).on('data', function (data) {
+                process.stdout.pipe(data);
+            }).on('close', function (data) {
+                console.log('Saved changes to', configPath);
+                process.exit();
+            })
         }
     }
 

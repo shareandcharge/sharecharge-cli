@@ -27,6 +27,7 @@ export default class StoreLogic extends LogicBase {
             console.log(`${res.locId}\nscId: ${res.scId}\nipfs: ${res.ipfs}\n`);
         }
 
+        this.close();
     };
 
     public updateLocations = async (argv) => {
@@ -65,6 +66,7 @@ export default class StoreLogic extends LogicBase {
         for (const res of results) {
             console.log(`${res.locId}\nscId: ${res.scId}\nipfs: ${res.ipfs}\n`);
         }
+        this.close();
 
     };
 
@@ -90,6 +92,7 @@ export default class StoreLogic extends LogicBase {
             console.log(`scId: ${res.scId}\n`);
         }
 
+        this.close();
     };
 
     public getLocationIds = async (argv) => {
@@ -109,6 +112,7 @@ export default class StoreLogic extends LogicBase {
             const location = await this.core.sc.store.getLocationsByCPO(cpo);
             console.log(JSON.stringify(location, null, 2));
         }
+        this.close();
     };
 
     public addTariffs = async (argv) => {
@@ -119,6 +123,7 @@ export default class StoreLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
+        this.close();
     };
 
     public updateTariffs = async (argv) => {
@@ -129,12 +134,14 @@ export default class StoreLogic extends LogicBase {
         } catch (err) {
             console.log(err.message);
         }
+        this.close();
     };
 
     public getTariffs = async (argv) => {
         const cpo = argv.cpo || this.core.wallet.keychain[0].address;
         const result = await this.core.sc.store.getAllTariffsByCPO(cpo);
         console.log(JSON.stringify(result, null, 2));
+        this.close();
     };
 
     public getOwner = async () => {
@@ -142,6 +149,7 @@ export default class StoreLogic extends LogicBase {
         console.log(scId);
         const owner = await this.core.sc.store.getOwnerOfLocation(scId);
         console.log("Location owner: ",chalk.green(owner));
+        this.close();
     }
     
 }

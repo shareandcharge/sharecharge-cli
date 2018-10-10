@@ -19,22 +19,26 @@ export default class WalletLogic extends LogicBase {
         console.log('Wallet created. Update the seed in your configuration to use.');
         console.log(`coinbase: ${newWallet.wallet.coinbase}`);
         console.log(`seed:     ${chalk.blue(newWallet.seed)}`);
+        this.close();
     } 
 
     public info = async () => {
         console.log(`coinbase: ${this.core.wallet.coinbase}`);
         console.log(`tx count: ${await this.web3.eth.getTransactionCount(this.core.wallet.coinbase)}`);
+        this.close();
     }
 
     public balance = async () => {
         const balance = await this.web3.eth.getBalance(this.core.wallet.coinbase);
         console.log(`balance: ${balance} Wei (${this.web3.utils.fromWei(balance)} Ether)`);
+        this.close();
     }
 
     public fund = async () => {
         const coinbase = await this.web3.eth.getCoinbase();
         await this.web3.eth.sendTransaction({ from: coinbase, to: this.core.wallet.coinbase, value: this.web3.utils.toWei('1') });
         console.log('funded wallet 1 ether');
+        this.close();
     }
 
 }
