@@ -16,7 +16,8 @@ export default class ChargeLogic extends LogicBase {
         const token =  this.core.sc.token.address;
 
         const scId = (await prompter.getScId()).scId
-        const location = await this.core.sc.store.getLocationById(this.core.wallet.coinbase, scId);
+        const owner = await this.core.sc.store.getOwnerOfLocation(scId);
+        const location = await this.core.sc.store.getLocationById(owner, scId);
         const evseIds = location.getEvseIds();
         const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
 
