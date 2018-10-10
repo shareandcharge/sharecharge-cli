@@ -92,7 +92,8 @@ export default class ChargeLogic extends LogicBase {
     public confirmStart = async () => {
 
         const scId = (await prompter.getScId()).scId
-        const location = await this.core.sc.store.getLocationById(this.core.wallet.coinbase, scId);
+        const owner = await this.core.sc.store.getOwnerOfLocation(scId);
+        const location = await this.core.sc.store.getLocationById(owner, scId);
         const evseIds = location.getEvseIds();
         const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
         const sessionId = '0x01';
@@ -112,7 +113,8 @@ export default class ChargeLogic extends LogicBase {
     public requestStop = async () => {
 
         const scId = (await prompter.getScId()).scId;
-        const location = await this.core.sc.store.getLocationById(this.core.wallet.coinbase, scId);
+        const owner = await this.core.sc.store.getOwnerOfLocation(scId);
+        const location = await this.core.sc.store.getLocationById(owner, scId);
         const evseIds = location.getEvseIds();
         const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
 
@@ -130,7 +132,8 @@ export default class ChargeLogic extends LogicBase {
     public confirmStop = async () => {
 
         const scId = (await prompter.getScId()).scId
-        const location = await this.core.sc.store.getLocationById(this.core.wallet.coinbase, scId);
+        const owner = await this.core.sc.store.getOwnerOfLocation(scId);
+        const location = await this.core.sc.store.getLocationById(owner, scId);
         const evseIds = location.getEvseIds();
         const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
 
@@ -148,7 +151,8 @@ export default class ChargeLogic extends LogicBase {
     public getSession = async () => {
 
         const scId = (await prompter.getScId()).scId
-        const location = await this.core.sc.store.getLocationById(this.core.wallet.coinbase, scId);
+        const owner = await this.core.sc.store.getOwnerOfLocation(scId);
+        const location = await this.core.sc.store.getLocationById(owner, scId);
         const evseIds = location.getEvseIds();
         const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
 
@@ -163,7 +167,8 @@ export default class ChargeLogic extends LogicBase {
     public chargeDetailRecord = async () => {
 
         const scId = (await prompter.getScId()).scId
-        const location = await this.core.sc.store.getLocationById(this.core.wallet.coinbase, scId);
+        const owner = await this.core.sc.store.getOwnerOfLocation(scId);
+        const location = await this.core.sc.store.getLocationById(owner, scId);
         const evseIds = location.getEvseIds();
         const evseId = (await prompter.getEvseId(evseIds)).evseId[0];
         const chargedUnits = (await prompter.getTariffValue('0')).value * 1000;
