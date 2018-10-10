@@ -43,12 +43,18 @@ export default class ConfigLogic extends LogicBase {
             spawn(process.env.EDITOR, [configPath], {
                 stdio: 'inherit',
                 detached: true
-            }).on('data', function (data) {
+            }).on('data', (data) => {
                 process.stdout.pipe(data);
-            }).on('close', function (data) {
+            }).on('error', (err) => {
+                console.log(err);
+                process.exit();
+            }).on('close', () => {
                 console.log('Saved changes to', configPath);
                 process.exit();
             })
+        } else {
+            console.log('No $EDITOR set');
+            process.exit();
         }
     }
 
