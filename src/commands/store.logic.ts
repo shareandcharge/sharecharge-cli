@@ -39,18 +39,12 @@ export default class StoreLogic extends LogicBase {
 
         const evLocations = await this.core.sc.store.getLocationsByCPO(this.core.wallet.keychain[0].address);
 
-        console.log('locations:', locations);
-        console.log('evl:', evLocations);
-
         for (const location of locations) {
             try {
 
                 const evLocation = Object.entries(evLocations).filter((loc) => {
-                    console.log('loc:', loc);
                     return loc[1].id ? loc[1].id === location.id : false;
                 })[0];
-
-                console.log('evLocation:', evLocation);
 
                 if (evLocation) {
                     const result = await this.core.sc.store.useWallet(this.core.wallet)
