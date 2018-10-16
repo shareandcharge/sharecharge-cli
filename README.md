@@ -135,7 +135,7 @@ The file can be updated, and similarly the network updated:
 sc-cli store update-locations
 ```
 
-The same is true for tariffs:
+The same is true for tariffs (also in [OCPI format](https://github.com/ocpi/ocpi/blob/master/mod_tariffs.md#3-object-description)):
 ```
 sc-cli store add-tariffs
 sc-cli store update-tariffs
